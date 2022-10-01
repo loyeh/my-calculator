@@ -1,3 +1,9 @@
+@font-face {
+	font-family: "LCDMono2";
+	font-style: normal;
+	font-weight: 700;
+	src: local("LCDMono2"), url("img/LCDM2B__.woff") format("woff");
+}
 :root {
 	--size: calc(min(7vw, 7vh));
 	--grid_size: 2em;
@@ -10,7 +16,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 5px;
+	padding: 5%;
 }
 .grid_container {
 	
@@ -18,7 +24,6 @@ body {
 	grid-template-columns: repeat(4, 1fr);
 	gap: calc(var(--grid_size) / 5);
 	background-color: #2e343b;
-	/* justify-content:space-around; */
 	align-items: center;
 	padding: 0.4em;
 	width: calc(5 * var(--grid_size));
@@ -31,52 +36,55 @@ body {
 	background-color: #ffffff22;
 	font-size: var(--size);
 	width: var(--grid_size);
-	box-shadow: -2px -2px 2px #ffffff4a, 2px 2px 2px #000000;
+	box-shadow: -2px -2px 1px #ffffff4a, 2px 2px 2px #000000;
 	cursor: pointer;
-	min-width: 20px;
-	/* margin: 0.2em; */
+	min-width: 20%;
 }
 .grid_item:hover > a,.grid_item:active > a {
 	display: block;
-	background-color: #00000011;
+	background-color: #00000016;
 
 }
-.grid_item:active,.grid_item:active > a{
-	translate: -1px -1px;
+.grid_item:active{
+	translate: -2% -2%;
 }
 
 #display {
+	font-family: "LCDMono2";
+	color: #f7f7c1c8;
 	text-align: right;
 	width: calc(2.3 * var(--grid_size));
-	line-height: 1em;
 	grid-column: 1 / 5;
 	box-shadow: none;
 	background-color: black;
-	border: #8888ff 1px solid;
+	border: #8888ff 1% solid;
 	cursor: text;
 	min-width: 95px;
 	font-size: calc(2*var(--size));
 	padding: calc(0.1 * var(--grid_size));
-
+	box-shadow: -2px -2px 1px #2b2b2baa, 2px 2px 2px #ffffff29;
 }
+
 a {
 	text-decoration: none;
 }
+
 span {
 	color: #fff;
 	user-select: none;
 	font-size: 1em;
 }
+
 #copy {
 	background-color: #11ff22bb;
-	box-shadow: -2px -2x 2px #11ff22aa, 2px 2px 2px #000000;
+	box-shadow: -2px -2px 1px #28c132aa, 2px 2px 2px #000000;
 }
 #clear {
 	background-color: #ff00007d;
-	box-shadow: -2px -2px 2px #ff000066, 2px 2px 2px #000000;
+	box-shadow: -2px -2px 1px #ef3232a1,  2px 2px 2px #000000;
 }
 .function {
 	background-color: #948603;
-	box-shadow: -2px -2px 2px #f8e4029c, 2px 2px 2px #000000;
+	box-shadow: -2px -2px 1px #f8e4029c, 2px 2px 2px #000000;
 }
 
