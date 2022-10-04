@@ -8,68 +8,82 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<main >
+		<main>
 			<div class="grid_container">
-				<div class="display" id="display"><span>0</span></div>
-				<div class="grid_item" id="clear">
-					<a href="#"><span>C</span></a>
+				<div class="display" id="display">
+					<span id="equation">0</span>
+				</div>
+				<div class="grid_item" id="all_clear">
+					<a class="button" onclick="all_clear()" id=""><span>C</span></a>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>+/-</span></a>
+					<a class="button" onclick="" id="paran"
+						><span> <small>()</small></span></a
+					>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>%</span></a>
+					<a class="button" id="pecent" onclick="percent"><span>%</span></a>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>/</span></a>
+					<a class="button" onclick="inputText('/')" id="divide"
+						><span>/</span></a
+					>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>7</span></a>
+					<a class="button" onclick="inputText(7)" id="seven"><span>7</span></a>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>8</span></a>
+					<a class="button" onclick="inputText(8)" id="eight"><span>8</span></a>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>9</span></a>
+					<a class="button" onclick="inputText(9)" id="nine"><span>9</span></a>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>x</span></a>
+					<a class="button" onclick="inputText('x')" id="multiply"
+						><span>x</span></a
+					>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>4</span></a>
+					<a class="button" onclick="inputText(4)" id="four"><span>4</span></a>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>5</span></a>
+					<a class="button" onclick="inputText(5)" id="five"><span>5</span></a>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>6</span></a>
+					<a class="button" onclick="inputText(6)" id="six"><span>6</span></a>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>-</span></a>
+					<a class="button" onclick="inputText('-')" id="minus"
+						><span>-</span></a
+					>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>1</span></a>
+					<a class="button" onclick="inputText(1)" id="one"><span>1</span></a>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>2</span></a>
+					<a class="button" onclick="inputText(2)" id="two"><span>2</span></a>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>3</span></a>
+					<a class="button" onclick="inputText(3)" id="three"><span>3</span></a>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>+</span></a>
+					<a class="button" onclick="inputText('+')" id="plus"
+						><span>+</span></a
+					>
 				</div>
 				<div class="grid_item" id="copy">
-					<a href="#"><span class="">M</span></a>
+					<a class="button" id="toggleMinus" onclick="toggleMinus"
+						><span class="">+/-</span></a
+					>
 				</div>
 				<div class="grid_item digit">
-					<a href="#"><span>0</span></a>
+					<a class="button" onclick="inputText(0)" id="zero"><span>0</span></a>
 				</div>
 				<div class="grid_item decimal">
-					<a href="#"><span>.</span></a>
+					<a class="button" onclick="inputText('.')" id="dot"><span>.</span></a>
 				</div>
 				<div class="grid_item function">
-					<a href="#"><span>=</span></a>
+					<a class="button" onclick="" id="equal"><span>=</span></a>
 				</div>
 			</div>
 		</main>
