@@ -73,7 +73,7 @@ main {
 #display {
 	color: rgba(245, 222, 179, 0.15);
 	position: relative;
-	font-family: LCDMono2, Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-align: right;
 	width: calc(2.3 * var(--grid_size));
 	grid-column: 1 / 5;
