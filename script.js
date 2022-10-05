@@ -2,12 +2,20 @@
 
 const display = document.getElementById("equation");
 
-function inputText(x) {
+function inputText(x, y = 1) {
 	if (display.innerText == 0) {
 		display.innerText = "";
 	}
-	display.innerText += x;
+	if (y == "a") {
+		let d = display.innerText;
+		if (d[d.length - 1] !== x) {
+			display.innerText += x;
+		}
+	} else {
+		display.innerText += x;
+	}
 }
+console.log(display.innerText);
 
 function all_clear() {
 	display.innerText = "0";
