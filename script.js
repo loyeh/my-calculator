@@ -3,12 +3,37 @@
 const display = document.getElementById("equation");
 
 function inputText(x, y = 1) {
-	if (display.innerText == 0) {
+	let d = display.innerText;
+	let text = "";
+	if (d[0] == 0 || d[0] == "%") {
 		display.innerText = "";
 	}
-	if (y == "a") {
-		let d = display.innerText;
-		if (d[d.length - 1] !== x) {
+	if (
+		(y == "a") &
+		(d[0] == "/" ||
+			d[0] == "x" ||
+			d[0] == "." ||
+			d[0] == "-" ||
+			d[0] == "+" ||
+			d[0] == "%" ||
+			d[0] == 0)
+	) {
+		x = 0;
+	}
+	if (y != 1) {
+		if (
+			d[d.length - 1] == "/" ||
+			d[d.length - 1] == "x" ||
+			d[d.length - 1] == "." ||
+			d[d.length - 1] == "-" ||
+			d[d.length - 1] == "+"
+		) {
+			for (let i = 0; i < d.length - 1; i++) {
+				text += d[i];
+			}
+			d = text;
+			display.innerText = d + x;
+		} else {
 			display.innerText += x;
 		}
 	} else {

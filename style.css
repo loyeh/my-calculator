@@ -1,25 +1,14 @@
-@font-face {
-	font-family: "LCDMono2";
-	font-style: normal;
-	font-weight: 700;
-	src: local("LCDMono2"), url("img/LCDM2B__.woff") format("woff");
-}
 :root {
-	--size: min(7vw, 7vh);
-	--grid_size: 2em;
+	--size: 18px;
+	--grid_size: 40px;
 }
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
-small {
-	position: relative;
-	top: -6px;
-}
-body {
-	font-size: var(--size);
 
+body {
 	overflow: visible;
 	display: flex;
 	align-items: center;
@@ -38,13 +27,12 @@ main {
 	translate: -50% -50%;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: calc(var(--grid_size) / 5);
+	gap: calc(var(--grid_size) / 6);
 	background-color: #4b525b;
 	align-items: center;
-	padding: 0.4em;
+	padding: calc(var(--size) / 3);
 	margin: auto;
 	border: 1px solid black;
-	min-width: 100px;
 	border-radius: 3.5%;
 	box-shadow: 3px 3px 2px 2px #222222cc;
 }
@@ -55,10 +43,9 @@ main {
 	color: beige;
 	background-color: #ffffff22;
 	font-size: var(--size);
-	width: var(--grid_size);
+	width: calc(var(--grid_size) * 0.85);
 	box-shadow: -2px -2px 1px #ffffff4a, 2px 2px 2px #000000;
 	cursor: pointer;
-	min-width: 20%;
 	/* margin: 0.13em; */
 }
 .grid_item:hover > a,
@@ -75,7 +62,7 @@ main {
 	position: relative;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: right;
-	width: calc(2.3 * var(--grid_size));
+	width: calc(3.9 * var(--grid_size));
 	grid-column: 1 / 5;
 	background-color: #161616;
 	/* border: #ffffff 1px solid; */
@@ -83,8 +70,7 @@ main {
 	white-space: nowrap;
 	overflow: hidden;
 	cursor: text;
-	min-width: 95px;
-	min-height: 1em;
+	height: calc(var(--size) * 1.5);
 	font-size: calc(2 * var(--size));
 	padding: calc(0.1 * var(--grid_size));
 	box-shadow: -2px -2px 2px 2px #0a0a0aaa, 2px 2px 2px 2px#ffffff29;
