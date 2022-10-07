@@ -40,8 +40,43 @@ function inputText(x, y = 1) {
 		display.innerText += x;
 	}
 }
-console.log(display.innerText);
+// console.log(display.innerText);
 
 function all_clear() {
 	display.innerText = "0";
+}
+function calculator(event) {
+	let vari = event.key;
+	console.log(vari);
+
+	if (
+		vari == 1 ||
+		vari == 2 ||
+		vari == 3 ||
+		vari == 4 ||
+		vari == 5 ||
+		vari == 6 ||
+		vari == 7 ||
+		vari == 8 ||
+		vari == 9 ||
+		vari == 0
+	) {
+		inputText(vari);
+	}
+	if (
+		vari == "+" ||
+		vari == "-" ||
+		vari == "x" ||
+		vari == "/" ||
+		vari == "%" ||
+		vari == "."
+	) {
+		inputText(vari, "a");
+	}
+	if (vari == "c") {
+		all_clear();
+	}
+	if (vari == "*") {
+		inputText("x", " a");
+	}
 }
