@@ -3,6 +3,9 @@
 let display = document.getElementById("equation");
 
 function inputText(x) {
+	if (display.innerText == "0") {
+		display.innerText = "";
+	}
 	display.innerText += x;
 }
 
@@ -17,6 +20,9 @@ function deletText() {
 	let text = "";
 	for (let i = 0; i < d.length - 1; i++) {
 		text += d[i];
+	}
+	if (text == "") {
+		text = "0";
 	}
 	display.innerText = text;
 }
