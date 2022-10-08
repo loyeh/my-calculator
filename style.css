@@ -43,12 +43,17 @@ main {
 	background-color: #ffffff22;
 	font-size: calc(var(--grid_size) * 0.25);
 	width: calc(var(--grid_size) * 0.5);
+	height: calc(var(--grid_size) * 0.3);
 	box-shadow: -2px -2px 1px #ffffff4a, 2px 2px 2px #000000;
 	cursor: pointer;
 	/* margin: 0.13em; */
 }
-.grid_item:hover > a,
-.grid_item:active > a {
+.grid_item > div {
+	width: calc(var(--grid_size) * 0.5);
+	height: calc(var(--grid_size) * 0.3);
+}
+.grid_item:hover > div,
+.grid_item:active > div {
 	display: block;
 	background-color: #00000016;
 }
@@ -69,7 +74,7 @@ main {
 	white-space: nowrap;
 	overflow: hidden;
 	cursor: text;
-	height: calc(var(--grid_size) * 0.5);
+	height: calc(var(--grid_size) * 0.6);
 	font-size: calc(var(--grid_size) * 0.55);
 	padding: calc(0.1 * var(--grid_size));
 	box-shadow: -2px -2px 2px 2px #0a0a0aaa, 2px 2px 2px 2px#ffffff29;
@@ -85,25 +90,26 @@ main {
 	user-select: text !important;
 }
 
-a {
-	text-decoration: none;
-}
-
 span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: inherit;
+	width: inherit;
 	color: #fff;
 	user-select: none;
 	font-size: 1em;
 }
 
 #copy {
-	background-color: #11ff22bb;
-	box-shadow: -2px -2px 1px #28c132aa, 2px 2px 2px #000000;
+	background-color: #00b00c;
+	box-shadow: -2px -2px 2px #00ff11b4, 2px 2px 2px #000000;
 }
 #all_clear {
 	background-color: #ff00007d;
-	box-shadow: -2px -2px 1px #ef3232a1, 2px 2px 2px #000000;
+	box-shadow: -2px -2px 2px #ff0000bb, 2px 2px 2px #000000;
 }
 .function {
 	background-color: #948603;
-	box-shadow: -2px -2px 1px #f8e4029c, 2px 2px 2px #000000;
+	box-shadow: -2px -2px 2px #f8e4029c, 2px 2px 2px #000000;
 }
