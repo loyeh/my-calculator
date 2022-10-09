@@ -9,22 +9,31 @@
 	</head>
 	<body onkeydown="calculator(event)">
 		<main>
-			<div class="calculator">
+			<div id="calculator">
+				<div class="setting" id="setting">
+					<button class="settingbtn" >&#9776</button>
+					<div class="setting-content">
+					  <a href="#">Link 1</a>
+					  <a href="#">Link 2</a>
+					  <a href="#">Link 3</a>
+					</div>
+				  </div>
 				<div class="grid_container">
 					<div class="display" id="display">
+						  
 						<span id="equation">0</span>
 					</div>
-					<div class="grid_item" id="all_clear">
-						<div onclick="all_clear()" id=""><span>AC</span></div>
+					<div class="grid_item function" id="all_clear" >
+						<div   onclick="all_clear()" id=""><span  >AC</span></div>
 					</div>
 					<div class="grid_item function">
-						<div onclick="inputText('&#x28')" id="paran"
-							><span> <small>(</small></span></div
+						<div  id="openParantez" onclick="inputText('&#x28')" 
+							><span  >(</span></div
 						>
 					</div>
 					<div class="grid_item function">
-						<div id="pecent" onclick="inputText('&#x29')"
-							><span> <small>)</small></span></div
+						<div id="closeParantez" onclick="inputText('&#x29')"
+							><span  >)</span></div
 						>
 					</div>
 					<div class="grid_item function">
@@ -86,9 +95,9 @@
 							><span>+</span></div
 						>
 					</div>
-					<div class="grid_item" id="copy">
-						<div id="toggleMinus" onclick="deletText()"
-							><span class="">&#x2190</span></div
+					<div class="grid_item function" id="clear" >
+						<div onclick="deletText()"
+							><span class="clear" >&#x21E6</span></div
 						>
 					</div>
 					<div class="grid_item digit">

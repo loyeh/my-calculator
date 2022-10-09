@@ -1,22 +1,23 @@
 // function for adding the value of pressed button to the display
 
-let display = document.getElementById("equation");
+const equation = document.getElementById("equation");
+const display = document.getElementById("display");
 
 function inputText(x) {
-	if (display.innerText == "0") {
-		display.innerText = "";
+	if (equation.innerText == "0") {
+		equation.innerText = "";
 	}
-	display.innerText += x;
+	equation.innerText += x;
 }
 
-// console.log(display.innerText);
+// console.log(equation.innerText);
 
 function all_clear() {
-	display.innerText = "0";
+	equation.innerText = "0";
 }
 
 function deletText() {
-	let d = display.innerText;
+	let d = equation.innerText;
 	let text = "";
 	for (let i = 0; i < d.length - 1; i++) {
 		text += d[i];
@@ -24,7 +25,7 @@ function deletText() {
 	if (text == "") {
 		text = "0";
 	}
-	display.innerText = text;
+	equation.innerText = text;
 }
 
 function calculator(event) {
