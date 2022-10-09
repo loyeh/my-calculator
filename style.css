@@ -15,7 +15,7 @@ body {
 }
 #calculator {
 	position: relative;
-	width: 100vw;
+	width: calc(var(--grid_size) * 3);
 	height: 100vh;
 	overflow: visible;
 }
@@ -92,7 +92,7 @@ span {
 	position: relative;
 	display: inline-block;
 	top: 20%;
-	right: -13%;
+	right: -4%;
 	user-select: auto;
 	cursor: pointer;
 	z-index: 10;
@@ -167,5 +167,8 @@ span.clear {
 	.grid_item,
 	.grid_item > div {
 		height: 12vh;
+	}
+	#setting {
+		top: 4%;
 	}
 }
