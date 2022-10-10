@@ -63,7 +63,7 @@ function calculator(event) {
 		inputText(vari);
 	}
 
-	if (vari == "c") {
+	if (vari == "c" || vari == "Escape") {
 		all_clear();
 	}
 	if (vari == "*") {
