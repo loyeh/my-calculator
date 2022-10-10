@@ -80,32 +80,38 @@ span {
 	grid-column: 1 / 5;
 	background-color: #161616;
 	white-space: nowrap;
-	overflow: hidden;
+	overflow-y: hidden;
+	overflow-x: visible;
 	cursor: text;
 	height: calc(var(--grid_size) * 0.8);
 	box-shadow: -2px -2px 2px 2px #0a0a0aaa, 2px 2px 2px 2px#ffffff29;
+	user-select: none;
+	/* border: 2px yellowgreen solid !important; */
 }
 
 #equation {
-	font-size: calc(0.4 * var(--grid_size));
+	font-size: calc(0.35 * var(--grid_size));
 	bottom: 2%;
-	right: 2% !important;
+	right: 1% !important;
 	translate: -0% -0%;
 	user-select: text !important;
+	/* border: 2px purple solid !important; */
 }
 
 /* styling the setting menue */
 
-.setting {
+#setting {
 	width: calc(0.2 * var(--grid_size));
-	position: absolute;
 	display: block;
-	top: 20.5%;
-	right: 5%;
+	position: absolute;
+	top: 5%;
+	right: 5% !important;
 	user-select: none;
 	cursor: pointer;
 	z-index: 10;
 	background-color: #000000;
+	/* border: 2px red solid !important; */
+	height: max-content;
 }
 /* setting icon */
 #settingIcon {
@@ -119,6 +125,7 @@ span {
 #settingContent {
 	display: none;
 	width: fit-content;
+	height: fit-content;
 	background-color: #f1f1f1f1;
 	font-size: 1em;
 	white-space: nowrap;
@@ -133,6 +140,7 @@ span {
 	padding: 12px 30px;
 	text-decoration: none;
 	display: block;
+	z-index: 11;
 }
 /* setting hover effects */
 #settingContent a:hover {
