@@ -83,7 +83,7 @@ span {
 	overflow-y: hidden;
 	overflow-x: visible;
 	cursor: text;
-	height: calc(var(--grid_size) * 0.8);
+	height: calc(var(--grid_size) * 1.2);
 	box-shadow: -2px -2px 2px 2px #0a0a0aaa, 2px 2px 2px 2px#ffffff29;
 	user-select: none;
 	/* border: 2px yellowgreen solid !important; */
@@ -91,7 +91,7 @@ span {
 
 #equation {
 	font-size: calc(0.35 * var(--grid_size));
-	bottom: 2%;
+	top: 2%;
 	right: 1% !important;
 	translate: -0% -0%;
 	user-select: text !important;
@@ -104,7 +104,7 @@ span {
 	width: calc(0.2 * var(--grid_size));
 	display: block;
 	position: absolute;
-	top: 5%;
+	top: 25%;
 	right: 5% !important;
 	user-select: none;
 	cursor: pointer;
@@ -188,6 +188,6 @@ span.clear {
 		height: 12vh;
 	}
 	#setting {
-		top: 4%;
+		top: 16%;
 	}
 }
