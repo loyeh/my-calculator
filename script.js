@@ -4,20 +4,21 @@ const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 
 function inputText(x) {
-	if (equation.innerText == "0") {
-		equation.innerText = "";
+	if (equation.value == "0") {
+		equation.value = "";
 	}
-	equation.innerText += x;
+	x = equation.value + x;
+	equation.value = x;
 }
 
 // console.log(equation.innerText);
 
 function all_clear() {
-	equation.innerText = "0";
+	equation.value = "0";
 }
 
 function deletText() {
-	let d = equation.innerText;
+	let d = equation.value;
 	let text = "";
 	for (let i = 0; i < d.length - 1; i++) {
 		text += d[i];
@@ -25,7 +26,7 @@ function deletText() {
 	if (text == "") {
 		text = "0";
 	}
-	equation.innerText = text;
+	equation.value = text;
 }
 
 function showSetting() {
@@ -55,7 +56,6 @@ function calculator(event) {
 		vari == 0 ||
 		vari == "+" ||
 		vari == "-" ||
-		vari == "x" ||
 		vari == "/" ||
 		vari == "%" ||
 		vari == "."

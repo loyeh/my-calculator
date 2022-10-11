@@ -79,10 +79,6 @@ span {
 	position: relative;
 	grid-column: 1 / 5;
 	background-color: #161616;
-	white-space: nowrap;
-	overflow-y: hidden;
-	overflow-x: visible;
-	cursor: text;
 	height: calc(var(--grid_size) * 1.2);
 	box-shadow: -2px -2px 2px 2px #0a0a0aaa, 2px 2px 2px 2px#ffffff29;
 	user-select: none;
@@ -90,11 +86,18 @@ span {
 }
 
 #equation {
-	font-size: calc(0.35 * var(--grid_size));
-	top: 2%;
-	right: 1% !important;
+	font-size: calc(0.33 * var(--grid_size));
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: 6em;
 	translate: -0% -0%;
 	user-select: text !important;
+	color: wheat;
+	background-color: transparent;
+	text-align: right;
+	justify-content: baseline;
+	overflow: hidden;
 	/* border: 2px purple solid !important; */
 }
 
