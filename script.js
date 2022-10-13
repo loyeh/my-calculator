@@ -7,14 +7,14 @@ function inputText(x) {
 	if (equation.value == "0") {
 		equation.value = "";
 	}
-	x = equation.value + x;
-	equation.value = x;
+	equation.value += x;
 }
 
 // console.log(equation.innerText);
 
 function all_clear() {
 	equation.value = "0";
+	equation.style.fontSize = "inherit";
 }
 
 function deletText() {
@@ -71,5 +71,22 @@ function calculator(event) {
 	}
 	if (vari == "Backspace") {
 		deletText();
+	}
+	let equationText = equation.value;
+	let size = window.getComputedStyle(equation).fontSize;
+	let s = document.getElementById("equation").style.fontSize;
+	let e = "";
+	for (let i = 0; i < size.length - 2; i++) {
+		e += size[i];
+	}
+	console.log(equationText.length, size, typeof s, s, e);
+
+	if (equationText.length > equation.cols) {
+		if (equation.cols < 20) {
+			equation.style.fontSize = `${e * 0.75}px`;
+			equation.cols = Math.round(1.33333 * equation.cols);
+		} else if (equation.rows < 3) {
+			equation.rows++;
+		}
 	}
 }

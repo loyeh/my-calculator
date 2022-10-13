@@ -76,8 +76,13 @@ span {
 
 #display {
 	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	font-size: 70px;
+
 	position: relative;
 	grid-column: 1 / 5;
+	align-items: flex-start;
+	justify-items: right;
 	background-color: #161616;
 	height: calc(var(--grid_size) * 1.2);
 	box-shadow: -2px -2px 2px 2px #0a0a0aaa, 2px 2px 2px 2px#ffffff29;
@@ -86,17 +91,17 @@ span {
 }
 
 #equation {
-	font-size: calc(0.33 * var(--grid_size));
+	font-size: 70px;
+	direction: rtl;
 	margin: 0;
 	padding: 0;
 	border: none;
-	font-size: 6em;
 	translate: -0% -0%;
 	user-select: text !important;
 	color: wheat;
 	background-color: transparent;
 	text-align: right;
-	justify-content: baseline;
+	justify-self: right;
 	overflow: hidden;
 	/* border: 2px purple solid !important; */
 }
