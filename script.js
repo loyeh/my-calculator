@@ -34,9 +34,9 @@ function showSetting() {
 	const settingIcon = document.getElementById("settingIcon");
 	settingContent.style.display = "block";
 	settingIcon.style.opacity = 1;
-	settingIcon.style.filter =
-		"invert(0%) sepia(6%) saturate(7478%) hue-rotate(307deg) brightness(98%) contrast(106%)";
-	settingIcon.style.backgroundColor = "white";
+	// settingIcon.style.filter =
+	// 	"invert(0%) sepia(6%) saturate(7478%) hue-rotate(307deg) brightness(98%) contrast(106%)";
+	// settingIcon.style.backgroundColor = "white";
 }
 
 function calculator(event) {
