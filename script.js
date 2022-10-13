@@ -8,6 +8,7 @@ function inputText(x) {
 		equation.value = "";
 	}
 	equation.value += x;
+	resizeText();
 }
 
 // console.log(equation.innerText);
@@ -15,6 +16,8 @@ function inputText(x) {
 function all_clear() {
 	equation.value = "0";
 	equation.style.fontSize = "inherit";
+	equation.cols = 9;
+	equation.rows = 1;
 }
 
 function deletText() {
@@ -25,6 +28,9 @@ function deletText() {
 	}
 	if (text == "") {
 		text = "0";
+		equation.style.fontSize = "inherit";
+		equation.cols = 9;
+		equation.rows = 1;
 	}
 	equation.value = text;
 }
@@ -72,6 +78,9 @@ function calculator(event) {
 	if (vari == "Backspace") {
 		deletText();
 	}
+	resizeText();
+}
+function resizeText() {
 	let equationText = equation.value;
 	let size = window.getComputedStyle(equation).fontSize;
 	let s = document.getElementById("equation").style.fontSize;
