@@ -1,27 +1,28 @@
-// function for adding the value of pressed button to the display
+// function for adding the innerText of pressed button to the display
 
 const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 
 function inputText(x) {
-	if (equation.value == "0") {
-		equation.value = "";
+	if (equation.innerText == "0") {
+		equation.innerText = "";
 	}
-	equation.value += x;
-	resizeText();
+	equation.innerText += x;
+	shrinkText();
 }
 
 // console.log(equation.innerText);
 
 function all_clear() {
-	equation.value = "0";
+	equation.innerText = "0";
 	equation.style.fontSize = "inherit";
 	equation.cols = 9;
 	equation.rows = 1;
 }
 
 function deletText() {
-	let d = equation.value;
+	let d = equation.innerText;
+	let size = equation.style.fontSize;
 	let text = "";
 	for (let i = 0; i < d.length - 1; i++) {
 		text += d[i];
@@ -32,7 +33,8 @@ function deletText() {
 		equation.cols = 9;
 		equation.rows = 1;
 	}
-	equation.value = text;
+	equation.innerText = text;
+	ExpandText();
 }
 
 function showSetting() {
@@ -78,24 +80,32 @@ function calculator(event) {
 	if (vari == "Backspace") {
 		deletText();
 	}
-	resizeText();
-}
-function resizeText() {
-	let equationText = equation.value;
-	let size = window.getComputedStyle(equation).fontSize;
-	let s = document.getElementById("equation").style.fontSize;
-	let e = "";
-	for (let i = 0; i < size.length - 2; i++) {
-		e += size[i];
-	}
-	console.log(equationText.length, size, typeof s, s, e);
 
-	if (equationText.length > equation.cols) {
-		if (equation.cols < 20) {
-			equation.style.fontSize = `${e * 0.75}px`;
-			equation.cols = Math.round(1.33333 * equation.cols);
-		} else if (equation.rows < 3) {
-			equation.rows++;
+	shrinkText();
+}
+
+function shrinkText() {
+	let size = parseInt(window.getComputedStyle(equation).fontSize);
+
+	while (isOverflown()) {
+		if (size > 30) {
+			size--;
+			equation.style.fontSize = `${size}px`;
 		}
 	}
+}
+function ExpandText() {
+	let size = parseInt(window.getComputedStyle(equation).fontSize);
+
+	while (isSmaller() && size < 70) {
+		size++;
+		equation.style.fontSize = `${size}px`;
+	}
+}
+
+function isOverflown() {
+	return equation.scrollWidth > equation.clientWidth;
+}
+function isSmaller() {
+	return equation.scrollWidth < equation.clientWidth;
 }

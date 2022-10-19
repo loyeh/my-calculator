@@ -1,0 +1,119 @@
+.calculator_body {
+	display: grid;
+	gap: 15px;
+	padding: 15px;
+	grid-template-areas:
+		"myArea myArea myArea myArea"
+		"myArea myArea myArea myArea"
+		". . . .";
+	width: 475px;
+	height: 700px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #777;
+	border-radius: 15px;
+	border: 1px solid #bbb;
+	translate: -50% -50%;
+	scale: 0.75;
+}
+span {
+	user-select: none;
+}
+.calculator_display {
+	grid-area: myArea;
+	border-radius: 2px;
+	box-shadow: 3px 3px 3px #ffffff77, -3px -3px 3px #00000077;
+	background-color: #000000;
+	padding: 20px;
+	width: 435px;
+	/* height: 200px; */
+	/* margin: 3px; */
+	color: #ffffff;
+	font-size: 80px;
+	text-align: right;
+}
+.calculator_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	opacity: 0.8;
+	border: #444444 solid 1px;
+	width: 105px;
+	border-radius: 2px;
+	/* margin: 2px; */
+	/* box-shadow: -3px -3px 3px #ffffff77, 3px 3px 3px #00000077; */
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+	font-weight: 300;
+	font-size: 2em;
+	cursor: pointer;
+}
+.calculator_button:hover {
+	opacity: 1;
+}
+.function {
+	background-color: #bbb;
+}
+.operator {
+	background-color: #85c0ff;
+}
+#equation {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 70px;
+	user-select: text !important;
+	color: wheat;
+	background-color: transparent;
+	text-align: right;
+}
+#setting {
+	display: block;
+	position: absolute;
+	top: 130px;
+	right: 35px !important;
+	user-select: none;
+	cursor: pointer;
+	z-index: 10;
+	background-color: transparent;
+	/* border: 2px red solid !important; */
+	height: max-content;
+}
+/* setting icon */
+#settingIcon {
+	transform: scalex(-1);
+	width: 35px;
+	opacity: 0.3;
+	filter: invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg)
+		brightness(114%) contrast(105%);
+}
+#settingIcon:hover {
+	opacity: 1;
+}
+/* setting menue */
+#settingContent {
+	display: none;
+	width: fit-content;
+	height: fit-content;
+	background-color: #ffffff8b;
+	font-size: 0.4em;
+	white-space: nowrap;
+	box-shadow: -3px -3px 16px 0px #ffffff74;
+	position: absolute;
+	right: 40px;
+	bottom: 20px;
+	opacity: 1;
+	z-index: 11;
+}
+#settingContent a {
+	color: black;
+	/* border: 1px solid black; */
+	padding: 5px 40px;
+	text-decoration: none;
+	display: block;
+	z-index: 11;
+}
+/* setting hover effects */
+#settingContent a:hover {
+	background-color: #dddddddd;
+}
