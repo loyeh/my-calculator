@@ -6,10 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="ahmad.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 	</head>
 	<body onkeydown="calculator(event)">
 		<div class="calculator_body">
-			<div class="calculator_display" id="display"><div id="equation">0</div>
+			<section class="calculator_display" id="display"><div id="equation">0</div>
 				<div class="setting" id="setting" onclick="showSetting()">
 					<img src="img/engine-gears-icon.svg" alt="setting icon" id="settingIcon">
 					<div id="settingContent">
@@ -18,27 +20,29 @@
 					  <a href="#">Link 3</a>
 					</div>
 				  </div>
-			</div>
-			<div class="calculator_button function" onclick="all_clear()"><span>AC</span></div>
-			<div class="calculator_button function" onclick="deletText()"><span>&#x21E6</span></div>
-			<div class="calculator_button operator" onclick="inputText('&#x28')"><span>(</span></div>
-			<div class="calculator_button operator" onclick="inputText('&#x29')"><span>)</span></div>
-			<div class="calculator_button number" onclick="inputText(7)"><span>7</span></div>
-			<div class="calculator_button number" onclick="inputText(8)"><span>8</span></div>
-			<div class="calculator_button number" onclick="inputText(9)"><span>9</span></div>
-			<div class="calculator_button operator" onclick="inputText('&#xF7')"><span>&#xF7</span></div>
-			<div class="calculator_button number" onclick="inputText(4)"><span>4</span></div>
-			<div class="calculator_button number" onclick="inputText(5)"><span>5</span></div>
-			<div class="calculator_button number" onclick="inputText(6)"><span>6</span></div>
-			<div class="calculator_button operator" onclick="inputText('&#xD7')"><span>&#xD7</span></div>
-			<div class="calculator_button number" onclick="inputText(1)"><span>1</span></div>
-			<div class="calculator_button number" onclick="inputText(2)"><span>2</span></div>
-			<div class="calculator_button number" onclick="inputText(3)"><span>3</span></div>
-			<div class="calculator_button operator" onclick="inputText('-')"><span>-</span></div>
-			<div class="calculator_button number" onclick="inputText(0)"><span>0</span></div>
-			<div class="calculator_button" onclick="inputText('.')"><span>.</span></div>
-			<div class="calculator_button function" onclick=""><span>=</span></div>
-			<div class="calculator_button operator" onclick="inputText('+')"><span>+</span></div>
+			</section>
+			<section class="button_container">
+				<div class="calculator_button function" onclick="all_clear()"><span>AC</span></div>
+				<div class="calculator_button function" onclick="deletText()	"><span>&#x21E6</span></div>
+				<div class="calculator_button operator" onclick="inputText('&#x28')"><span>(</span></div>
+				<div class="calculator_button operator" onclick="inputText('&#x29')"><span>)</span></div>
+				<div class="calculator_button number" onclick="inputText(7)"><span>7</span></div>
+				<div class="calculator_button number" onclick="inputText(8)"><span>8</span></div>
+				<div class="calculator_button number" onclick="inputText(9)"><span>9</span></div>
+				<div class="calculator_button operator" onclick="inputText('&#xF7')"><span>&#xF7</span></div>
+				<div class="calculator_button number" onclick="inputText(4)"><span>4</span></div>
+				<div class="calculator_button number" onclick="inputText(5)"><span>5</span></div>
+				<div class="calculator_button number" onclick="inputText(6)"><span>6</span></div>
+				<div class="calculator_button operator" onclick="inputText('&#xD7')"><span>&#xD7</span></div>
+				<div class="calculator_button number" onclick="inputText(1)"><span>1</span></div>
+				<div class="calculator_button number" onclick="inputText(2)"><span>2</span></div>
+				<div class="calculator_button number" onclick="inputText(3)"><span>3</span></div>
+				<div class="calculator_button operator" onclick="inputText('-')"><span>-</span></div>
+				<div class="calculator_button number" onclick="inputText(0)"><span>0</span></div>
+				<div class="calculator_button" onclick="inputText('.')"><span>.</span></div>
+				<div class="calculator_button function" onclick=""><span>=</span></div>
+				<div class="calculator_button operator" onclick="inputText('+')"><span>+</span></div>
+			</section>
 		</div>
 		<script src="script.js"></script>
 	</body>

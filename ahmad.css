@@ -1,21 +1,18 @@
 .calculator_body {
-	display: grid;
-	gap: 15px;
-	padding: 15px;
-	grid-template-areas:
-		"myArea myArea myArea myArea"
-		"myArea myArea myArea myArea"
-		". . . .";
-	width: 475px;
-	height: 700px;
+	padding: 10px;
+	width: 94vw;
+	height: 95vh;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	background-color: #777;
-	border-radius: 15px;
-	border: 1px solid #bbb;
 	translate: -50% -50%;
-	scale: 0.75;
+}
+.button_container {
+	display: grid;
+	gap: 4%;
+	grid-template-columns: repeat(4, 1fr);
+	height: 68%;
+	grid-area: buttons;
 }
 span {
 	user-select: none;
@@ -23,15 +20,27 @@ span {
 .calculator_display {
 	grid-area: myArea;
 	border-radius: 2px;
-	box-shadow: 3px 3px 3px #ffffff77, -3px -3px 3px #00000077;
+	/* box-shadow: 3px 3px 3px #ffffff77, -3px -3px 3px #00000077; */
 	background-color: #000000;
-	padding: 20px;
-	width: 435px;
-	/* height: 200px; */
-	/* margin: 3px; */
+	/* padding: 20px; */
+	height: 30%;
+	margin-bottom: 5%;
 	color: #ffffff;
-	font-size: 80px;
-	text-align: right;
+	font-size: 70px;
+	align-items: center;
+}
+#equation {
+	width: 96%;
+	height: 80%;
+
+	font-family: "Courier New", Courier, monospace;
+	font-size: 70px;
+	user-select: none !important;
+	color: wheat;
+	background-color: transparent;
+	text-align: end;
+	/* border: 2px red solid !important; */
+	/* overflow: hidden; */
 }
 .calculator_button {
 	display: flex;
@@ -40,14 +49,11 @@ span {
 	background-color: #eee;
 	opacity: 0.8;
 	border: #444444 solid 1px;
-	width: 105px;
 	border-radius: 2px;
-	/* margin: 2px; */
-	/* box-shadow: -3px -3px 3px #ffffff77, 3px 3px 3px #00000077; */
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
 		"Lucida Sans", Arial, sans-serif;
 	font-weight: 300;
-	font-size: 2em;
+	font-size: 10vw;
 	cursor: pointer;
 }
 .calculator_button:hover {
@@ -59,18 +65,11 @@ span {
 .operator {
 	background-color: #85c0ff;
 }
-#equation {
-	font-family: "Courier New", Courier, monospace;
-	font-size: 70px;
-	user-select: text !important;
-	color: wheat;
-	background-color: transparent;
-	text-align: right;
-}
+
 #setting {
 	display: block;
 	position: absolute;
-	top: 130px;
+	bottom: 380px;
 	right: 35px !important;
 	user-select: none;
 	cursor: pointer;

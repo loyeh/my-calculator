@@ -86,26 +86,34 @@ function calculator(event) {
 
 function shrinkText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
-
+	let txt = equation.innerText;
 	while (isOverflown()) {
 		if (size > 30) {
-			size--;
+			size -= 0.1;
 			equation.style.fontSize = `${size}px`;
+		} else if (txt.length > 24 && txt.length < 72) {
+			equation.style.wordWrap = "break-word";
+			return;
 		}
 	}
 }
 function ExpandText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
+	let txt = equation.innerText;
 
-	while (isSmaller() && size < 70) {
-		size++;
+	while (isSmaller() && size < 70 && txt.length < 24) {
+		size += 0.1;
 		equation.style.fontSize = `${size}px`;
+		equation.style.wordWrap = "unset";
 	}
 }
 
 function isOverflown() {
-	return equation.scrollWidth > equation.clientWidth;
+	return (
+		equation.scrollWidth * 1.04 > display.clientWidth ||
+		equation.scrollHeight > display.clientHeight
+	);
 }
 function isSmaller() {
-	return equation.scrollWidth < equation.clientWidth;
+	return equation.scrollWidth * 1.04 < display.clientWidth;
 }
