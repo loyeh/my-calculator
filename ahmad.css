@@ -37,6 +37,7 @@ span {
 	height: 30%;
 	margin-bottom: 5%;
 	color: #ffffff;
+	font-size: 70px;
 	align-items: center;
 }
 #equation {
@@ -49,7 +50,8 @@ span {
 	color: wheat;
 	background-color: transparent;
 	text-align: end;
-	word-wrap: none;
+	word-wrap: unset;
+	vertical-align: bottom;
 	/* border: 2px red solid !important; */
 	/* overflow: hidden; */
 }
