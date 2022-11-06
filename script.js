@@ -91,8 +91,9 @@ function shrinkText() {
 		if (size > 30) {
 			size -= 0.1;
 			equation.style.fontSize = `${size}px`;
-		} else if (txt.length > 24 && txt.length < 72) {
+		} else {
 			equation.style.wordWrap = "break-word";
+			equation.style.overflowY = "hidden";
 			return;
 		}
 	}
@@ -101,7 +102,7 @@ function ExpandText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
 	let txt = equation.innerText;
 
-	while (isSmaller() && size < 70 && txt.length < 24) {
+	while (isSmaller() && size < 70 && txt.length < 20) {
 		size += 0.1;
 		equation.style.fontSize = `${size}px`;
 		equation.style.wordWrap = "unset";
@@ -109,10 +110,10 @@ function ExpandText() {
 }
 
 function isOverflown() {
-	return (
-		equation.scrollWidth * 1.04 > display.clientWidth ||
-		equation.scrollHeight > display.clientHeight
-	);
+	return equation.scrollWidth * 1.04 > display.clientWidth;
+}
+function isX_Overflown() {
+	return equation.scrollHeight > display.clientHeight;
 }
 function isSmaller() {
 	return equation.scrollWidth * 1.04 < display.clientWidth;

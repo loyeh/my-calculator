@@ -1,17 +1,28 @@
+:root {
+	--w_size: 100vw;
+	--h_size: 100vh;
+	--back: #00000022;
+}
+body {
+	background-color: #ffffff;
+}
 .calculator_body {
 	padding: 10px;
-	width: 94vw;
-	height: 95vh;
+	width: calc(0.94 * var(--w_size));
+	height: calc(0.95 * var(--h_size));
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
+	border: #000000 solid 2px;
+	background-color: var(--back);
+	border-radius: 5px;
 }
 .button_container {
 	display: grid;
 	gap: 4%;
 	grid-template-columns: repeat(4, 1fr);
-	height: 68%;
+	height: 67%;
 	grid-area: buttons;
 }
 span {
@@ -26,19 +37,19 @@ span {
 	height: 30%;
 	margin-bottom: 5%;
 	color: #ffffff;
-	font-size: 70px;
 	align-items: center;
 }
 #equation {
 	width: 96%;
 	height: 80%;
-
+	-webkit-box-direction: reverse;
 	font-family: "Courier New", Courier, monospace;
-	font-size: 70px;
+	font-size: calc(0.1 * var(--h_size));
 	user-select: none !important;
 	color: wheat;
 	background-color: transparent;
 	text-align: end;
+	word-wrap: none;
 	/* border: 2px red solid !important; */
 	/* overflow: hidden; */
 }
@@ -53,7 +64,7 @@ span {
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
 		"Lucida Sans", Arial, sans-serif;
 	font-weight: 300;
-	font-size: 10vw;
+	font-size: calc(0.1 * var(--w_size));
 	cursor: pointer;
 }
 .calculator_button:hover {
@@ -69,8 +80,8 @@ span {
 #setting {
 	display: block;
 	position: absolute;
-	bottom: 380px;
-	right: 35px !important;
+	top: calc(0.22 * var(--h_size));
+	right: calc(0.04 * var(--w_size)) !important;
 	user-select: none;
 	cursor: pointer;
 	z-index: 10;
@@ -81,7 +92,7 @@ span {
 /* setting icon */
 #settingIcon {
 	transform: scalex(-1);
-	width: 35px;
+	width: calc(0.08 * var(--w_size));
 	opacity: 0.3;
 	filter: invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg)
 		brightness(114%) contrast(105%);
@@ -92,22 +103,23 @@ span {
 /* setting menue */
 #settingContent {
 	display: none;
-	width: fit-content;
+	width: calc(0.3 * var(--w_size));
 	height: fit-content;
 	background-color: #ffffff8b;
 	font-size: 0.4em;
 	white-space: nowrap;
 	box-shadow: -3px -3px 16px 0px #ffffff74;
 	position: absolute;
-	right: 40px;
+	right: 30px;
 	bottom: 20px;
+	text-align: center;
 	opacity: 1;
 	z-index: 11;
 }
 #settingContent a {
 	color: black;
 	/* border: 1px solid black; */
-	padding: 5px 40px;
+	padding: 8% 36%;
 	text-decoration: none;
 	display: block;
 	z-index: 11;
@@ -115,4 +127,31 @@ span {
 /* setting hover effects */
 #settingContent a:hover {
 	background-color: #dddddddd;
+}
+@media only screen and (max-width: 600px) {
+	:root {
+		--w_size: 100vw;
+		--h_size: 100vh;
+		--back: #eeeeee88;
+	}
+	.button_container {
+		gap: 3%;
+		height: 69%;
+	}
+	.calculator_display {
+		height: 28%;
+		margin-bottom: 5%;
+	}
+
+	#setting {
+		top: calc(0.22 * var(--h_size));
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	:root {
+		--w_size: 400px;
+		--h_size: 600px;
+		--back: #aaaaaaaa;
+	}
 }
