@@ -77,7 +77,7 @@ function calculator(event) {
 		all_clear();
 	}
 	if (vari == "*") {
-		inputText("&#xD7");
+		inputText('×');
 	}
 	if (vari == "Backspace") {
 		deletText();
