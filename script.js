@@ -36,12 +36,7 @@ function deletText() {
 
 function showSetting() {
 	const settingContent = document.getElementById("settingContent");
-	const settingIcon = document.getElementById("settingIcon");
-	settingContent.style.display = "block";
-	settingIcon.style.opacity = 1;
-	// settingIcon.style.filter =
-	// 	"invert(0%) sepia(6%) saturate(7478%) hue-rotate(307deg) brightness(98%) contrast(106%)";
-	// settingIcon.style.backgroundColor = "white";
+	settingContent.classList.toggle("show");
 }
 
 function calculator(event) {
@@ -77,7 +72,7 @@ function calculator(event) {
 		all_clear();
 	}
 	if (vari == "*") {
-		inputText(`${"&#xD7"}`);
+		inputText("×");
 	}
 	if (vari == "Backspace") {
 		deletText();
@@ -120,11 +115,17 @@ function isX_Overflown() {
 function isSmaller() {
 	return equation.scrollWidth * 1.04 < display.clientWidth;
 }
+const element = document.getElementById("calculator_body");
 function darkMode() {
-	var element = document.getElementById("calculator_body");
+	element.classList.remove("default");
+	element.classList.remove("lightMode");
 	element.classList.add("darkMode");
 }
 function lightMode() {
-	var element = document.getElementById("calculator_body");
+	element.classList.remove("default");
+	element.classList.add("lightMode");
+}
+function defaultSetting() {
 	element.classList.remove("darkMode");
+	element.classList.add("default");
 }
