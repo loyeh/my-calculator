@@ -16,11 +16,13 @@ function inputText(x) {
 function all_clear() {
 	equation.innerText = "0";
 	equation.style.fontSize = "inherit";
-	equation.style.wordWrap = "unset";
+	equation.cols = 9;
+	equation.rows = 1;
 }
 
 function deletText() {
 	let d = equation.innerText;
+	let size = equation.style.fontSize;
 	let text = "";
 	for (let i = 0; i < d.length - 1; i++) {
 		text += d[i];
@@ -28,7 +30,8 @@ function deletText() {
 	if (text == "") {
 		text = "0";
 		equation.style.fontSize = "inherit";
-		equation.style.wordWrap = "unset";
+		equation.cols = 9;
+		equation.rows = 1;
 	}
 	equation.innerText = text;
 	ExpandText();
@@ -58,21 +61,16 @@ function calculator(event) {
 		vari == "-" ||
 		vari == "/" ||
 		vari == "%" ||
-		vari == "(" ||
-		vari == ")" ||
 		vari == "."
 	) {
 		inputText(vari);
 	}
-	if (equation.rows > 4) {
-		equation.style.top = "unset";
-		equation.style.bottom = "5px";
-	}
+
 	if (vari == "c" || vari == "Escape") {
 		all_clear();
 	}
 	if (vari == "*") {
-		inputText("×");
+		inputText("x");
 	}
 	if (vari == "Backspace") {
 		deletText();
@@ -83,13 +81,14 @@ function calculator(event) {
 
 function shrinkText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
+	let txt = equation.innerText;
 	while (isOverflown()) {
 		if (size > 30) {
 			size -= 0.1;
 			equation.style.fontSize = `${size}px`;
 		} else {
 			equation.style.wordWrap = "break-word";
-			equation.style.overflow = "hidden";
+			equation.style.overflowY = "hidden";
 			return;
 		}
 	}
@@ -102,7 +101,6 @@ function ExpandText() {
 		size += 0.1;
 		equation.style.fontSize = `${size}px`;
 		equation.style.wordWrap = "unset";
-		equation.style.overflow = "unset";
 	}
 }
 
@@ -114,18 +112,4 @@ function isX_Overflown() {
 }
 function isSmaller() {
 	return equation.scrollWidth * 1.04 < display.clientWidth;
-}
-const element = document.getElementById("calculator_body");
-function darkMode() {
-	element.classList.remove("default");
-	element.classList.remove("lightMode");
-	element.classList.add("darkMode");
-}
-function lightMode() {
-	element.classList.remove("default");
-	element.classList.add("lightMode");
-}
-function defaultSetting() {
-	element.classList.remove("darkMode");
-	element.classList.add("default");
 }

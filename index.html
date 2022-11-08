@@ -10,14 +10,14 @@
 
 	</head>
 	<body onkeydown="calculator(event)">
-		<div class="calculator_body" id="calculator_body">
+		<div class="calculator_body">
 			<section class="calculator_display" id="display"><div id="equation">0</div>
 				<div class="setting" id="setting" onclick="showSetting()">
 					<img src="img/engine-gears-icon.svg" alt="setting icon" id="settingIcon">
 					<div id="settingContent">
-					  <div onclick="lightMode()">Light Mode</div>
-					  <div onclick="darkMode()">Dark Mode</div>
-					  <div onclick="defaultSetting()">System Default</div>
+					  <a href="#">Link 1</a>
+					  <a href="#">Link 2</a>
+					  <a href="#">Link 3</a>
 					</div>
 				  </div>
 			</section>
@@ -39,7 +39,7 @@
 				<div class="calculator_button number" onclick="inputText(3)"><span>3</span></div>
 				<div class="calculator_button operator" onclick="inputText('-')"><span>-</span></div>
 				<div class="calculator_button number" onclick="inputText(0)"><span>0</span></div>
-				<div class="calculator_button function" onclick="inputText('.')"><span>.</span></div>
+				<div class="calculator_button" onclick="inputText('.')"><span>.</span></div>
 				<div class="calculator_button function" onclick=""><span>=</span></div>
 				<div class="calculator_button operator" onclick="inputText('+')"><span>+</span></div>
 			</section>

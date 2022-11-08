@@ -1,55 +1,47 @@
-* {
-	box-sizing: border-box;
-	margin: 0%;
-	padding: 0%;
-}
 :root {
 	--w_size: 100vw;
 	--h_size: 100vh;
-	--back: #ffffff;
+	--back: #00000022;
 }
 body {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	/* background-color: #e46060; */
-	color: #270a55;
+	background-color: #ffffff;
 }
 .calculator_body {
 	padding: 10px;
-	width: var(--w_size);
-	height: var(--h_size);
+	width: calc(0.94 * var(--w_size));
+	height: calc(0.95 * var(--h_size));
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
 	border: #000000 solid 2px;
 	background-color: var(--back);
 	border-radius: 5px;
 }
 .button_container {
 	display: grid;
-	gap: 3%;
-	margin-block-start: 3.5%;
+	gap: 4%;
 	grid-template-columns: repeat(4, 1fr);
 	height: 67%;
+	grid-area: buttons;
 }
 span {
 	user-select: none;
 }
 .calculator_display {
-	position: relative;
+	grid-area: myArea;
 	border-radius: 2px;
-	background-color: #000000dd;
+	/* box-shadow: 3px 3px 3px #ffffff77, -3px -3px 3px #00000077; */
+	background-color: #000000;
+	/* padding: 20px; */
 	height: 30%;
+	margin-bottom: 5%;
 	color: #ffffff;
 	font-size: 70px;
 	align-items: center;
-	border: #ffffff 2px solid;
 }
 #equation {
-	position: absolute;
-	bottom: 35px;
-	right: 10px;
-	width: 95%;
+	width: 96%;
 	height: 80%;
 	-webkit-box-direction: reverse;
 	font-family: "Courier New", Courier, monospace;
@@ -60,16 +52,16 @@ span {
 	text-align: end;
 	word-wrap: unset;
 	vertical-align: bottom;
-	/* border: 2px yellow solid !important; */
+	/* border: 2px red solid !important; */
 	/* overflow: hidden; */
 }
 .calculator_button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #84848477;
+	background-color: #eee;
 	opacity: 0.8;
-	border: #666666 solid 1px;
+	border: #444444 solid 1px;
 	border-radius: 2px;
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
 		"Lucida Sans", Arial, sans-serif;
@@ -81,34 +73,32 @@ span {
 	opacity: 1;
 }
 .function {
-	background-color: #7e7d7d53;
+	background-color: #bbb;
 }
 .operator {
-	background-color: #2990fe85;
-}
-.number {
-	background-color: #d1d1d185;
+	background-color: #85c0ff;
 }
 
 #setting {
 	display: block;
 	position: absolute;
-	bottom: -8px;
-	right: 2px;
+	top: calc(0.22 * var(--h_size));
+	right: calc(0.04 * var(--w_size)) !important;
 	user-select: none;
 	cursor: pointer;
 	z-index: 10;
 	opacity: 0.3;
 	background-color: transparent;
+	/* border: 2px red solid !important; */
+	height: max-content;
 }
 /* setting icon */
 #settingIcon {
 	transform: scalex(-1);
-	width: calc(0.07 * var(--w_size));
-	height: calc(0.07 * var(--w_size));
+	width: calc(0.08 * var(--w_size));
+	opacity: 0.3;
 	filter: invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg)
 		brightness(114%) contrast(105%);
-	/* border: 2px red solid !important; */
 }
 #setting:hover {
 	opacity: 1;
@@ -116,10 +106,11 @@ span {
 /* setting menue */
 #settingContent {
 	display: none;
+	width: calc(0.3 * var(--w_size));
+	height: fit-content;
 	background-color: #ffffff8b;
-	font-size: 0.3em;
+	font-size: 0.4em;
 	white-space: nowrap;
-	color: #000000;
 	box-shadow: -3px -3px 16px 0px #ffffff74;
 	position: absolute;
 	right: 30px;
@@ -128,35 +119,19 @@ span {
 	opacity: 1;
 	z-index: 11;
 }
-
-#settingContent div {
+#settingContent a {
+	color: black;
+	/* border: 1px solid black; */
+	padding: 8% 36%;
 	text-decoration: none;
 	display: block;
-	padding: 2px 20px;
 	z-index: 11;
 }
 /* setting hover effects */
-#settingContent div:hover {
+#settingContent a:hover {
 	background-color: #dddddddd;
 }
-.darkMode {
-	background-color: black;
-	color: white;
-}
-.lightMode {
-	background-color: #f5adad6a;
-	color: #251256;
-}
-.show {
-	display: block !important;
-	opacity: 1;
-}
-.default {
-	color: initial;
-	background-color: initial;
-}
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
 	:root {
 		--w_size: 100vw;
 		--h_size: 100vh;
@@ -170,24 +145,16 @@ span {
 		height: 28%;
 		margin-bottom: 5%;
 	}
-	#settingContent {
-		font-size: 0.3em;
-	}
-}
-@media only screen and (max-height: 650px) {
-	#settingContent {
-		font-size: 0.25em;
-	}
-}
-@media only screen and (max-height: 350px) {
-	#settingContent {
-		font-size: 0.2em;
+
+	#setting {
+		top: calc(0.22 * var(--h_size));
 	}
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
 	:root {
 		--w_size: 400px;
 		--h_size: 600px;
+		--back: #aaaaaaaa;
 	}
 }
