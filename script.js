@@ -10,7 +10,6 @@ function inputText(x) {
 	equation.value += x;
 	shrinkText();
 }
-
 // console.log(equation.value);
 
 function all_clear() {
@@ -18,18 +17,6 @@ function all_clear() {
 	equation.style.fontSize = "inherit";
 	equation.style.wordWrap = "unset";
 }
-
-window.onclick = function (event) {
-	if (!event.target.matches(".settingIcon")) {
-		var i;
-		for (let i = 0; i < dropdowns.length; i++) {
-			let openDropdown = dropdowns[i];
-			if (openDropdown.classList.contains("show")) {
-				openDropdown.classList.remove("show");
-			}
-		}
-	}
-};
 
 function deletText() {
 	let d = equation.value;
@@ -50,42 +37,55 @@ function showSetting() {
 	const settingContent = document.getElementById("settingContent");
 	settingContent.classList.toggle("show");
 }
+window.onclick = function (event) {
+	if (!event.target.matches(".settingIcon")) {
+		var i;
+		for (let i = 0; i < dropdowns.length; i++) {
+			let openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains("show")) {
+				openDropdown.classList.remove("show");
+			}
+		}
+	}
 
+	equation.focus();
+};
 function calculator(event) {
-	let vari = event.key;
-	console.log(vari);
+	let pressdKey = event.key;
+
+	console.log(pressdKey);
 
 	if (
-		vari == 1 ||
-		vari == 2 ||
-		vari == 3 ||
-		vari == 4 ||
-		vari == 5 ||
-		vari == 6 ||
-		vari == 7 ||
-		vari == 8 ||
-		vari == 9 ||
-		vari == 0 ||
-		vari == "+" ||
-		vari == "-" ||
-		vari == "/" ||
-		vari == "(" ||
-		vari == ")" ||
-		vari == "."
+		pressdKey == 1 ||
+		pressdKey == 2 ||
+		pressdKey == 3 ||
+		pressdKey == 4 ||
+		pressdKey == 5 ||
+		pressdKey == 6 ||
+		pressdKey == 7 ||
+		pressdKey == 8 ||
+		pressdKey == 9 ||
+		pressdKey == 0 ||
+		pressdKey == "+" ||
+		pressdKey == "-" ||
+		pressdKey == "/" ||
+		pressdKey == "(" ||
+		pressdKey == ")" ||
+		pressdKey == "."
 	) {
-		inputText(vari);
+		inputText(pressdKey);
 	}
 	if (equation.rows > 4) {
 		equation.style.top = "unset";
 		equation.style.bottom = "5px";
 	}
-	if (vari == "c" || vari == "Escape") {
+	if (pressdKey == "c" || pressdKey == "Escape") {
 		all_clear();
 	}
-	if (vari == "*") {
+	if (pressdKey == "*") {
 		inputText("×");
 	}
-	if (vari == "Backspace") {
+	if (pressdKey == "Backspace") {
 		deletText();
 	}
 

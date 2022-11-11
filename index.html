@@ -12,7 +12,7 @@
 	<body onkeydown="calculator(event)">
 		<div class="calculator_body" id="calculator_body">
 			<section class="calculator_display" id="display">
-				<textarea id="equation">0</textarea>
+				<textarea id="equation" autofocus onblur="window.onclick">0</textarea>
 				<div class="setting" id="setting" onclick="showSetting()">
 					<img src="img/engine-gears-icon.svg" alt="setting icon" id="settingIcon" class="settingIcon">
 					<div id="settingContent" class="settingContent">
