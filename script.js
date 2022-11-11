@@ -82,6 +82,7 @@ function calculator(event) {
 	if (pressdKey == "c" || pressdKey == "Escape") {
 		all_clear();
 	}
+
 	if (pressdKey == "*") {
 		inputText("×");
 	}
