@@ -3,6 +3,7 @@
 const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 const dropdowns = document.getElementsByClassName("settingContent");
+
 function inputText(x) {
 	if (equation.value == "0") {
 		equation.value = "";
@@ -18,7 +19,6 @@ function all_clear() {
 	equation.style.fontSize = "inherit";
 	equation.style.wordWrap = "unset";
 }
-
 window.onclick = function (event) {
 	if (!event.target.matches(".settingIcon")) {
 		var i;
@@ -30,7 +30,6 @@ window.onclick = function (event) {
 		}
 	}
 };
-
 function deletText() {
 	let d = equation.value;
 	let text = "";
@@ -69,6 +68,7 @@ function calculator(event) {
 		vari == "+" ||
 		vari == "-" ||
 		vari == "/" ||
+		vari == "%" ||
 		vari == "(" ||
 		vari == ")" ||
 		vari == "."
