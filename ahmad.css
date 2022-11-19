@@ -58,14 +58,13 @@ span {
 	border: var(--bodyBackgroundColor) 2px solid;
 }
 #equation {
-	display: block;
 	position: absolute;
 	right: 2.5%;
 	width: 95%;
 	resize: none;
 	height: 80%;
 	font-family: "Courier New", Courier, monospace;
-	font-weight: 600;
+	/* font-weight: 600; */
 	font-size: calc(0.1 * var(--h_size));
 	user-select: none !important;
 	color: var(--displayTextColor);
@@ -73,7 +72,7 @@ span {
 	text-align: end;
 	word-wrap: unset;
 	/* border: 2px yellow solid !important; */
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 #equation:focus {
 	outline: none;

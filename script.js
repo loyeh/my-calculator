@@ -119,13 +119,13 @@ function ExpandText() {
 }
 
 function isOverflown() {
-	return equation.scrollWidth * 1.04 > display.clientWidth;
+	return equation.scrollWidth * 1.05 > display.clientWidth;
 }
 function isX_Overflown() {
 	return equation.scrollHeight > display.clientHeight;
 }
 function isSmaller() {
-	return equation.scrollWidth * 1.04 < display.clientWidth;
+	return equation.scrollWidth * 1.05 < display.clientWidth;
 }
 function darkMode() {
 	r.style.setProperty("--back", "#ffffff");
@@ -139,6 +139,7 @@ function darkMode() {
 	r.style.setProperty("--displayBackgroundColor", "#717070");
 	r.style.setProperty("--menueBackgroundColor", "#626262");
 	r.style.setProperty("--menueHoverBackgroundColor", "#0f0f0f");
+	equation.style.fontWeight = 600;
 }
 function lightMode() {
 	r.style.setProperty("--back", "#ffffff");
@@ -152,6 +153,7 @@ function lightMode() {
 	r.style.setProperty("--displayBackgroundColor", "#000000dd");
 	r.style.setProperty("--menueBackgroundColor", "#ffffff8b");
 	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
+	equation.style.fontWeight = 400;
 }
 function defaultMode() {
 	r.style.setProperty("--back", "initial");
