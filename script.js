@@ -131,7 +131,7 @@ function darkMode() {
 	r.style.setProperty("--back", "#ffffff");
 	r.style.setProperty("--btnTextColor", "#ffffff");
 	r.style.setProperty("--menueTextColor", "#ffffff");
-	r.style.setProperty("--displayTextColor", "#000000");
+	r.style.setProperty("--displayTextColor", "wheat");
 	r.style.setProperty("--numbersBackgroundColor", "#636363");
 	r.style.setProperty("--operatorsBackgroundColor", "#214c7a");
 	r.style.setProperty("--functionsBackgroundColor", "#404040");
@@ -139,7 +139,6 @@ function darkMode() {
 	r.style.setProperty("--displayBackgroundColor", "#717070");
 	r.style.setProperty("--menueBackgroundColor", "#626262");
 	r.style.setProperty("--menueHoverBackgroundColor", "#0f0f0f");
-	equation.style.fontWeight = 600;
 }
 function lightMode() {
 	r.style.setProperty("--back", "#ffffff");
@@ -153,7 +152,6 @@ function lightMode() {
 	r.style.setProperty("--displayBackgroundColor", "#000000dd");
 	r.style.setProperty("--menueBackgroundColor", "#ffffff8b");
 	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
-	equation.style.fontWeight = 400;
 }
 function defaultMode() {
 	r.style.setProperty("--back", "initial");
