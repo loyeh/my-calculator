@@ -65,6 +65,7 @@ span {
 	resize: none;
 	height: 80%;
 	font-family: "Courier New", Courier, monospace;
+	font-weight: 600;
 	font-size: calc(0.1 * var(--h_size));
 	user-select: none !important;
 	color: var(--displayTextColor);
@@ -72,7 +73,7 @@ span {
 	text-align: end;
 	word-wrap: unset;
 	/* border: 2px yellow solid !important; */
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 #equation:focus {
 	outline: none;
@@ -117,7 +118,7 @@ span {
 	background-color: transparent;
 }
 /* setting icon */
-#settingIcon {
+.settingIcon {
 	transform: scalex(-1);
 	width: calc(0.07 * var(--w_size));
 	height: calc(0.07 * var(--w_size));
@@ -127,6 +128,9 @@ span {
 	/* border: 2px red solid !important; */
 }
 .settingIcon:hover {
+	opacity: 1;
+}
+.settingIcon:focus-within {
 	opacity: 1;
 }
 /* setting menue */
@@ -195,4 +199,17 @@ span {
 		--w_size: 400px;
 		--h_size: 600px;
 	}
+	/* :root {
+		--back: #ffffff;
+		--btnTextColor: #ffffff;
+		--menueTextColor: #ffffff;
+		--displayTextColor: #000000;
+		--numbersBackgroundColor: #636363;
+		--operatorsBackgroundColor: #214c7a;
+		--functionsBackgroundColor: #404040;
+		--bodyBackgroundColor: #000000;
+		--displayBackgroundColor: #717070;
+		--menueBackgroundColor: #626262;
+		--menueHoverBackgroundColor: #0f0f0f;
+	} */
 }

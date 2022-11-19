@@ -4,6 +4,7 @@ const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
+const r = document.querySelector(":root");
 function inputText(x) {
 	if (equation.value == "0") {
 		equation.value = "";
@@ -127,14 +128,41 @@ function isSmaller() {
 	return equation.scrollWidth * 1.04 < display.clientWidth;
 }
 function darkMode() {
-	document.root;
+	r.style.setProperty("--back", "#ffffff");
+	r.style.setProperty("--btnTextColor", "#ffffff");
+	r.style.setProperty("--menueTextColor", "#ffffff");
+	r.style.setProperty("--displayTextColor", "#000000");
+	r.style.setProperty("--numbersBackgroundColor", "#636363");
+	r.style.setProperty("--operatorsBackgroundColor", "#214c7a");
+	r.style.setProperty("--functionsBackgroundColor", "#404040");
+	r.style.setProperty("--bodyBackgroundColor", "#000000");
+	r.style.setProperty("--displayBackgroundColor", "#717070");
+	r.style.setProperty("--menueBackgroundColor", "#626262");
+	r.style.setProperty("--menueHoverBackgroundColor", "#0f0f0f");
 }
 function lightMode() {
-	var element = document.getElementById("calculator_body");
-	element.classList.remove("default");
-	element.classList.add("lightMode");
+	r.style.setProperty("--back", "#ffffff");
+	r.style.setProperty("--btnTextColor", "#000000");
+	r.style.setProperty("--menueTextColor", "#000000");
+	r.style.setProperty("--displayTextColor", "wheat");
+	r.style.setProperty("--numbersBackgroundColor", "#d1d1d185");
+	r.style.setProperty("--operatorsBackgroundColor", "#2990fe85");
+	r.style.setProperty("--functionsBackgroundColor", "#7e7d7d53");
+	r.style.setProperty("--bodyBackgroundColor", "#ffffff");
+	r.style.setProperty("--displayBackgroundColor", "#000000dd");
+	r.style.setProperty("--menueBackgroundColor", "#ffffff8b");
+	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
 }
 function defaultMode() {
-	var element = document.getElementById("calculator_body");
-	element.classList.add("default");
+	r.style.setProperty("--back", "initial");
+	r.style.setProperty("--btnTextColor", "initial");
+	r.style.setProperty("--menueTextColor", "initial");
+	r.style.setProperty("--displayTextColor", "initialt");
+	r.style.setProperty("--numbersBackgroundColor", "initial");
+	r.style.setProperty("--operatorsBackgroundColor", "initial");
+	r.style.setProperty("--functionsBackgroundColor", "initial");
+	r.style.setProperty("--bodyBackgroundColor", "initial");
+	r.style.setProperty("--displayBackgroundColor", "initial");
+	r.style.setProperty("--menueBackgroundColor", "initial");
+	r.style.setProperty("--menueHoverBackgroundColor", "initial");
 }
