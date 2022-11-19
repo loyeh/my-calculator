@@ -2,6 +2,7 @@
 
 const equation = document.getElementById("equation");
 const display = document.getElementById("display");
+const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
 function inputText(x) {
 	if (equation.value == "0") {
@@ -34,21 +35,17 @@ function deletText() {
 }
 
 function showSetting() {
-	const settingContent = document.getElementById("settingContent");
 	settingContent.classList.toggle("show");
 }
 window.onclick = function (event) {
 	if (!event.target.matches(".settingIcon")) {
-		var i;
-		for (let i = 0; i < dropdowns.length; i++) {
+		for (i = 0; i < dropdowns.length; i++) {
 			let openDropdown = dropdowns[i];
 			if (openDropdown.classList.contains("show")) {
 				openDropdown.classList.remove("show");
 			}
 		}
 	}
-
-	equation.focus();
 };
 function calculator(event) {
 	let pressdKey = event.key;
@@ -105,6 +102,7 @@ function shrinkText() {
 			return;
 		}
 	}
+	equation.scrollTop = equation.scrollHeight;
 }
 function ExpandText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
@@ -116,6 +114,7 @@ function ExpandText() {
 		equation.style.wordWrap = "unset";
 		equation.style.overflow = "unset";
 	}
+	equation.scrollTop = equation.scrollHeight;
 }
 
 function isOverflown() {
@@ -128,10 +127,7 @@ function isSmaller() {
 	return equation.scrollWidth * 1.04 < display.clientWidth;
 }
 function darkMode() {
-	var element = document.getElementById("calculator_body");
-	element.classList.remove("lightMode");
-	element.classList.remove("default");
-	element.classList.add("darkMode");
+	document.root;
 }
 function lightMode() {
 	var element = document.getElementById("calculator_body");
