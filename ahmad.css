@@ -16,6 +16,7 @@
 	--bodyBackgroundColor: #ffffff;
 	--displayBackgroundColor: #000000dd;
 	--menueBackgroundColor: #ffffff8b;
+	--menueHoverBackgroundColor: #fffffffc;
 }
 textarea {
 	border: none;
@@ -49,12 +50,12 @@ span {
 .calculator_display {
 	position: relative;
 	border-radius: 2px;
-	background-color: #000000dd;
+	background-color: var(--displayBackgroundColor);
 	height: 30%;
-	color: #ffffff;
+	color: var(--displayTextColor);
 	font-size: 70px;
 	align-items: center;
-	border: #ffffff 2px solid;
+	border: var(--bodyBackgroundColor) 2px solid;
 }
 #equation {
 	display: block;
@@ -66,7 +67,7 @@ span {
 	font-family: "Courier New", Courier, monospace;
 	font-size: calc(0.1 * var(--h_size));
 	user-select: none !important;
-	color: wheat;
+	color: var(--displayTextColor);
 	background-color: transparent;
 	text-align: end;
 	word-wrap: unset;
@@ -81,6 +82,7 @@ span {
 	align-items: center;
 	justify-content: center;
 	background-color: var(--numbersBackgroundColor);
+	color: var(--btnTextColor);
 	opacity: 0.8;
 	/* border: #666666 solid 1px; */
 	border-radius: 5px;
@@ -124,16 +126,16 @@ span {
 		brightness(114%) contrast(105%);
 	/* border: 2px red solid !important; */
 }
-#settingIcon:hover {
+.settingIcon:hover {
 	opacity: 1;
 }
 /* setting menue */
-#settingContent {
+.settingContent {
 	display: none;
 	background-color: var(--menueBackgroundColor);
 	font-size: 0.3em;
 	white-space: nowrap;
-	color: #000000;
+	color: var(--menueTextColor);
 	box-shadow: -3px -3px 16px 0px #ffffff74;
 	position: absolute;
 	right: 30px;
@@ -142,21 +144,23 @@ span {
 	opacity: 1;
 	z-index: 11;
 }
-#settingContent div {
+.settingContent div {
 	text-decoration: none;
 	display: block;
 	padding: 2px 20px;
 	z-index: 11;
 }
 /* setting hover effects */
-#settingContent div:hover {
-	background-color: #dddddddd;
+.settingContent div:hover {
+	background-color: var(--menueHoverBackgroundColor);
 }
 .darkMode {
 	background-color: black;
 	color: white;
 }
-
+.show {
+	display: block;
+}
 @media only screen and (max-width: 500px) {
 	:root {
 		--w_size: 100vw;

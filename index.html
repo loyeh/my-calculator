@@ -9,13 +9,14 @@
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
 	</head>
-	<body onkeydown="calculator(event)">
+	<body onkeydown="calculator(event)" onclick="showSetting">
 		<div class="calculator_body" id="calculator_body">
 			<section class="calculator_display" id="display">
-				<textarea id="equation" autofocus onblur="window.onclick">0</textarea>
+				<textarea id="equation" cols="20" rows="2"></textarea>
+				
 				<div class="setting" id="setting" onclick="showSetting()">
 					<img src="img/engine-gears-icon.svg" alt="setting icon" id="settingIcon" class="settingIcon">
-					<div id="settingContent" class="settingContent">
+					<div id="settingContent" class="settingContent" >
 					  <div onclick="lightMode()">Light Mode</div>
 					  <div onclick="darkMode()">Dark Mode</div>
 					  <div onclick="defaultMode()">Syxtem Default</div>
