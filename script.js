@@ -4,20 +4,23 @@ const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
+const outputText = document.getElementById("output");
 const r = document.querySelector(":root");
 function inputText(x) {
 	if (equation.value == "0") {
 		equation.value = "";
 	}
 	equation.value += x;
+	output(equation.value);
 	shrinkText();
 }
 // console.log(equation.value);
 
 function all_clear() {
 	equation.value = "0";
-	equation.style.fontSize = "inherit";
+	equation.style.fontSize = "70";
 	equation.style.wordWrap = "unset";
+	output(equation.value);
 }
 
 function deletText() {
@@ -32,6 +35,7 @@ function deletText() {
 		equation.style.wordWrap = "unset";
 	}
 	equation.value = text;
+	output(text);
 	ExpandText();
 }
 
@@ -153,16 +157,19 @@ function lightMode() {
 	r.style.setProperty("--menueBackgroundColor", "#ffffff8b");
 	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
 }
-function defaultMode() {
-	r.style.setProperty("--back", "initial");
-	r.style.setProperty("--btnTextColor", "initial");
-	r.style.setProperty("--menueTextColor", "initial");
-	r.style.setProperty("--displayTextColor", "initialt");
-	r.style.setProperty("--numbersBackgroundColor", "initial");
-	r.style.setProperty("--operatorsBackgroundColor", "initial");
-	r.style.setProperty("--functionsBackgroundColor", "initial");
-	r.style.setProperty("--bodyBackgroundColor", "initial");
-	r.style.setProperty("--displayBackgroundColor", "initial");
-	r.style.setProperty("--menueBackgroundColor", "initial");
-	r.style.setProperty("--menueHoverBackgroundColor", "initial");
+// function defaultMode() {
+// 	r.style.setProperty("--back", "initial");
+// 	r.style.setProperty("--btnTextColor", "initial");
+// 	r.style.setProperty("--menueTextColor", "initial");
+// 	r.style.setProperty("--displayTextColor", "initialt");
+// 	r.style.setProperty("--numbersBackgroundColor", "initial");
+// 	r.style.setProperty("--operatorsBackgroundColor", "initial");
+// 	r.style.setProperty("--functionsBackgroundColor", "initial");
+// 	r.style.setProperty("--bodyBackgroundColor", "initial");
+// 	r.style.setProperty("--displayBackgroundColor", "initial");
+// 	r.style.setProperty("--menueBackgroundColor", "initial");
+// 	r.style.setProperty("--menueHoverBackgroundColor", "initial");
+// }
+function output(text) {
+	outputText.innerText = text;
 }

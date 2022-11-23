@@ -53,9 +53,19 @@ span {
 	background-color: var(--displayBackgroundColor);
 	height: 30%;
 	color: var(--displayTextColor);
-	font-size: 70px;
+	font-size: calc(0.1 * var(--h_size));
 	align-items: center;
 	border: var(--bodyBackgroundColor) 2px solid;
+}
+.output {
+	position: absolute;
+	opacity: 0.6;
+	background-color: #3b3b3b83;
+	width: 100%;
+	font-size: 29px;
+	bottom: 0px;
+	left: 2px;
+	border-top: var(--bodyBackgroundColor) 1px solid;
 }
 #equation {
 	position: absolute;
@@ -105,16 +115,24 @@ span {
 .number {
 	background-color: var(--numbersBackgroundColor);
 }
-
+.settingBack {
+	background-color: #000000;
+	position: absolute;
+	width: 9%;
+	height: 35px;
+	bottom: 0;
+	right: 0;
+}
 #setting {
 	display: block;
 	position: absolute;
-	bottom: -8px;
+	bottom: -11px;
 	right: 2px;
 	user-select: none;
 	cursor: pointer;
 	z-index: 10;
 	background-color: transparent;
+	transition: 1s ease-in;
 }
 /* setting icon */
 .settingIcon {
@@ -125,6 +143,7 @@ span {
 	filter: invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg)
 		brightness(114%) contrast(105%);
 	/* border: 2px red solid !important; */
+	transition: 0.6s ease-in;
 }
 .settingIcon:hover {
 	opacity: 1;
@@ -146,12 +165,14 @@ span {
 	text-align: center;
 	opacity: 1;
 	z-index: 11;
+	transition: 1s ease-in;
 }
 .settingContent div {
 	text-decoration: none;
 	display: block;
 	padding: 2px 20px;
 	z-index: 11;
+	transition: 0.35s ease-in;
 }
 /* setting hover effects */
 .settingContent div:hover {
