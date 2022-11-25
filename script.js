@@ -4,7 +4,7 @@ const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
-const outputText = document.getElementById("output");
+const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
 function inputText(x) {
 	if (equation.value == "0") {
@@ -12,7 +12,7 @@ function inputText(x) {
 	}
 	equation.value += x;
 	output(equation.value);
-	shrinkText();
+	shrinkText(equation, display);
 }
 // console.log(equation.value);
 
@@ -36,7 +36,7 @@ function deletText() {
 	}
 	equation.value = text;
 	output(text);
-	ExpandText();
+	ExpandText(equation, display);
 }
 
 function showSetting() {
@@ -95,9 +95,9 @@ function calculator(event) {
 	shrinkText();
 }
 
-function shrinkText() {
+function shrinkText(equation, display) {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
-	while (isOverflown()) {
+	while (isOverflown(equation, display)) {
 		if (size > 30) {
 			size -= 0.1;
 			equation.style.fontSize = `${size}px`;
@@ -109,11 +109,11 @@ function shrinkText() {
 	}
 	equation.scrollTop = equation.scrollHeight;
 }
-function ExpandText() {
+function ExpandText(equation, display) {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
 	let txt = equation.value;
 
-	while (isSmaller() && size < 70 && txt.length < 20) {
+	while (isSmaller(equation, display) && size < 70 && txt.length < 20) {
 		size += 0.1;
 		equation.style.fontSize = `${size}px`;
 		equation.style.wordWrap = "unset";
@@ -122,13 +122,11 @@ function ExpandText() {
 	equation.scrollTop = equation.scrollHeight;
 }
 
-function isOverflown() {
+function isOverflown(equation, display) {
 	return equation.scrollWidth * 1.05 > display.clientWidth;
 }
-function isX_Overflown() {
-	return equation.scrollHeight > display.clientHeight;
-}
-function isSmaller() {
+
+function isSmaller(equation, display) {
 	return equation.scrollWidth * 1.05 < display.clientWidth;
 }
 function darkMode() {
@@ -168,5 +166,10 @@ function defaultMode() {
 	}
 }
 function output(text) {
-	outputText.innerText = text;
+	outputNode.innerText = text;
+	if (isNaN(text)) {
+		outputNode.classList.add("show");
+	} else {
+		outputNode.classList.remove("show");
+	}
 }

@@ -58,15 +58,17 @@ span {
 	border: var(--bodyBackgroundColor) 2px solid;
 }
 .output {
+	display: none;
 	position: absolute;
 	/* opacity: 0.6; */
 	/* background-color: #3b3b3b83; */
-	width: 100%;
+	width: 90%;
 	font-size: 50px;
 	bottom: -3px;
 	left: 7px;
 	font-family: "Courier New", Courier, monospace;
 	/* border-top: var(--bodyBackgroundColor) 1px solid; */
+	overflow: hidden;
 }
 #equation {
 	position: absolute;
