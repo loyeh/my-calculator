@@ -140,7 +140,7 @@ function darkMode() {
 	r.style.setProperty("--operatorsBackgroundColor", "#214c7a");
 	r.style.setProperty("--functionsBackgroundColor", "#404040");
 	r.style.setProperty("--bodyBackgroundColor", "#000000");
-	r.style.setProperty("--displayBackgroundColor", "#717070");
+	r.style.setProperty("--displayBackgroundColor", "#303030");
 	r.style.setProperty("--menueBackgroundColor", "#626262");
 	r.style.setProperty("--menueHoverBackgroundColor", "#0f0f0f");
 }
