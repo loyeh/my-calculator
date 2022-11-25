@@ -157,19 +157,16 @@ function lightMode() {
 	r.style.setProperty("--menueBackgroundColor", "#ffffff8b");
 	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
 }
-// function defaultMode() {
-// 	r.style.setProperty("--back", "initial");
-// 	r.style.setProperty("--btnTextColor", "initial");
-// 	r.style.setProperty("--menueTextColor", "initial");
-// 	r.style.setProperty("--displayTextColor", "initialt");
-// 	r.style.setProperty("--numbersBackgroundColor", "initial");
-// 	r.style.setProperty("--operatorsBackgroundColor", "initial");
-// 	r.style.setProperty("--functionsBackgroundColor", "initial");
-// 	r.style.setProperty("--bodyBackgroundColor", "initial");
-// 	r.style.setProperty("--displayBackgroundColor", "initial");
-// 	r.style.setProperty("--menueBackgroundColor", "initial");
-// 	r.style.setProperty("--menueHoverBackgroundColor", "initial");
-// }
+function defaultMode() {
+	if (
+		window.matchMedia &&
+		window.matchMedia("(prefers-color-scheme: dark)").matches
+	) {
+		darkMode();
+	} else {
+		lightMode();
+	}
+}
 function output(text) {
 	outputText.innerText = text;
 }
