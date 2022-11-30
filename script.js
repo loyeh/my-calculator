@@ -12,13 +12,13 @@ function inputText(x) {
 	}
 	equation.value += x;
 	output(equation.value);
-	shrinkText(equation, display);
+	shrinkText();
 }
 // console.log(equation.value);
 
 function all_clear() {
 	equation.value = "0";
-	equation.style.fontSize = "70";
+	equation.style.fontSize = "inherit";
 	equation.style.wordWrap = "unset";
 	output(equation.value);
 }
@@ -36,13 +36,14 @@ function deletText() {
 	}
 	equation.value = text;
 	output(text);
-	ExpandText(equation, display);
+	ExpandText();
 }
 
 function showSetting() {
 	settingContent.classList.toggle("show");
 }
 window.onclick = function (event) {
+	console.log(event);
 	if (!event.target.matches(".settingIcon")) {
 		for (i = 0; i < dropdowns.length; i++) {
 			let openDropdown = dropdowns[i];
@@ -77,10 +78,7 @@ function calculator(event) {
 	) {
 		inputText(pressdKey);
 	}
-	if (equation.rows > 4) {
-		equation.style.top = "unset";
-		equation.style.bottom = "5px";
-	}
+
 	if (pressdKey == "c" || pressdKey == "Escape") {
 		all_clear();
 	}
@@ -95,9 +93,9 @@ function calculator(event) {
 	shrinkText();
 }
 
-function shrinkText(equation, display) {
+function shrinkText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
-	while (isOverflown(equation, display)) {
+	while (isOverflown()) {
 		if (size > 30) {
 			size -= 0.1;
 			equation.style.fontSize = `${size}px`;
@@ -109,11 +107,11 @@ function shrinkText(equation, display) {
 	}
 	equation.scrollTop = equation.scrollHeight;
 }
-function ExpandText(equation, display) {
+function ExpandText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
 	let txt = equation.value;
 
-	while (isSmaller(equation, display) && size < 70 && txt.length < 20) {
+	while (isSmaller() && size < 70 && txt.length < 20) {
 		size += 0.1;
 		equation.style.fontSize = `${size}px`;
 		equation.style.wordWrap = "unset";
@@ -122,11 +120,11 @@ function ExpandText(equation, display) {
 	equation.scrollTop = equation.scrollHeight;
 }
 
-function isOverflown(equation, display) {
+function isOverflown() {
 	return equation.scrollWidth * 1.05 > display.clientWidth;
 }
 
-function isSmaller(equation, display) {
+function isSmaller() {
 	return equation.scrollWidth * 1.05 < display.clientWidth;
 }
 function darkMode() {
@@ -141,19 +139,24 @@ function darkMode() {
 	r.style.setProperty("--displayBackgroundColor", "#303030");
 	r.style.setProperty("--menueBackgroundColor", "#626262");
 	r.style.setProperty("--menueHoverBackgroundColor", "#0f0f0f");
+	r.style.setProperty(
+		"--filter",
+		"invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg) brightness(114%) contrast(105%)"
+	);
 }
 function lightMode() {
-	r.style.setProperty("--back", "#ffffff");
+	r.style.setProperty("--back", "#ededed");
 	r.style.setProperty("--btnTextColor", "#000000");
 	r.style.setProperty("--menueTextColor", "#000000");
-	r.style.setProperty("--displayTextColor", "wheat");
+	r.style.setProperty("--displayTextColor", "000000");
 	r.style.setProperty("--numbersBackgroundColor", "#d1d1d185");
 	r.style.setProperty("--operatorsBackgroundColor", "#2990fe85");
 	r.style.setProperty("--functionsBackgroundColor", "#7e7d7d53");
-	r.style.setProperty("--bodyBackgroundColor", "#ffffff");
-	r.style.setProperty("--displayBackgroundColor", "#000000dd");
-	r.style.setProperty("--menueBackgroundColor", "#ffffff8b");
+	r.style.setProperty("--bodyBackgroundColor", "#fff");
+	r.style.setProperty("--displayBackgroundColor", "#e3f1ff");
+	r.style.setProperty("--menueBackgroundColor", "#85c4ffb8");
 	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
+	r.style.setProperty("--filter", "none");
 }
 function defaultMode() {
 	if (

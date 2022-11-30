@@ -14,7 +14,6 @@
 			<section class="calculator_display" id="display">
 				<textarea readonly id="equation" cols="20" rows="2">0</textarea>
 				<div class="output" id="output">0</div>
-				<div class="settingBack"></div>
 				<div class="setting" id="setting" onclick="showSetting()">
 					<img src="img/engine-gears-icon.svg" alt="setting icon" id="settingIcon" class="settingIcon">
 					<div id="settingContent" class="settingContent" >
@@ -27,24 +26,24 @@
 			<section class="button_container">
 				<div class="calculator_button function" onclick="all_clear()"><span>AC</span></div>
 				<div class="calculator_button function" onclick="deletText()	"><span>&#x21E6</span></div>
-				<div class="calculator_button operator" onclick="inputText('&#x28')"><span>(</span></div>
-				<div class="calculator_button operator" onclick="inputText('&#x29')"><span>)</span></div>
+				<div class="calculator_button operator" onclick="inputText('&#x28')"><span><small>()</small></span></div>
+				<div class="calculator_button operator" onclick="inputText('&#xF7')"><span>&#xF7</span></div>
 				<div class="calculator_button number" onclick="inputText(7)"><span>7</span></div>
 				<div class="calculator_button number" onclick="inputText(8)"><span>8</span></div>
 				<div class="calculator_button number" onclick="inputText(9)"><span>9</span></div>
-				<div class="calculator_button operator" onclick="inputText('&#xF7')"><span>&#xF7</span></div>
+				<div class="calculator_button operator" onclick="inputText('&#xD7')"><span>&#xD7</span></div>
 				<div class="calculator_button number" onclick="inputText(4)"><span>4</span></div>
 				<div class="calculator_button number" onclick="inputText(5)"><span>5</span></div>
 				<div class="calculator_button number" onclick="inputText(6)"><span>6</span></div>
-				<div class="calculator_button operator" onclick="inputText('&#xD7')"><span>&#xD7</span></div>
+				<div class="calculator_button operator" onclick="inputText('-')"><span>-</span></div>
 				<div class="calculator_button number" onclick="inputText(1)"><span>1</span></div>
 				<div class="calculator_button number" onclick="inputText(2)"><span>2</span></div>
 				<div class="calculator_button number" onclick="inputText(3)"><span>3</span></div>
-				<div class="calculator_button operator" onclick="inputText('-')"><span>-</span></div>
-				<div class="calculator_button number" onclick="inputText(0)"><span>0</span></div>
-				<div class="calculator_button function" onclick="inputText('.')"><span>.</span></div>
-				<div class="calculator_button function" onclick=""><span>=</span></div>
 				<div class="calculator_button operator" onclick="inputText('+')"><span>+</span></div>
+				<div class="calculator_button number" onclick="inputText('.')"><span>.</span></div>
+				<div class="calculator_button function" onclick="inputText('0')"><span>0</span></div>
+				<div class="calculator_button function" onclick=""><span>=</span></div>
+				<div class="calculator_button operator" onclick="inputText('^')"><span><sub>^</sub></span></div>
 			</section>
 		</div>
 		<script src="script.js"></script>
