@@ -36,11 +36,13 @@ body {
 	background-color: var(--back);
 }
 .calculator_body {
+	user-select: none;
 	padding: 10px;
 	width: var(--w_size);
 	height: var(--h_size);
 	border: #000000 solid 2px;
 	background-color: var(--bodyBackgroundColor);
+	font-size: 70px;
 	border-radius: 5px;
 }
 .button_container {
@@ -50,16 +52,14 @@ body {
 	grid-template-columns: repeat(4, 1fr);
 	height: 67%;
 }
-span {
-	user-select: none;
-}
+
 .calculator_display {
 	position: relative;
 	border-radius: 2px;
 	background-color: var(--displayBackgroundColor);
 	height: 30%;
 	color: var(--displayTextColor);
-	font-size: calc(0.1 * var(--h_size));
+	font-size: 70px;
 	align-items: center;
 	border: var(--bodyBackgroundColor) 2px solid;
 }
