@@ -83,8 +83,8 @@ body {
 	resize: none;
 	height: 80%;
 	font-family: "Courier New", Courier, monospace;
+	font-size: 70px;
 	/* font-weight: 600; */
-	font-size: calc(0.1 * var(--h_size));
 	user-select: none !important;
 	color: var(--displayTextColor);
 	background-color: transparent;
