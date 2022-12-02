@@ -4,6 +4,8 @@ const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
+// const settingIcon = document.getElementsByClassName("settingContent");
+// const calculatorBtn = document.getElementsByClassName("calculator_button");
 const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
 function inputText(x) {
@@ -39,11 +41,10 @@ function deletText() {
 	ExpandText();
 }
 
-function showSetting() {
-	settingContent.classList.toggle("show");
-}
 window.onclick = function (event) {
-	console.log(event);
+	const eM = event.target;
+	console.log(eM);
+	console.log(event.view);
 	if (!event.target.matches(".settingIcon")) {
 		for (i = 0; i < dropdowns.length; i++) {
 			let openDropdown = dropdowns[i];
@@ -51,6 +52,9 @@ window.onclick = function (event) {
 				openDropdown.classList.remove("show");
 			}
 		}
+	}
+	if (event.target.matches(".settingIcon")) {
+		settingContent.classList.toggle("show");
 	}
 };
 function calculator(event) {
@@ -111,7 +115,7 @@ function ExpandText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
 	let txt = equation.value;
 
-	while (isSmaller() && size < 70 && txt.length < 20) {
+	while (isSmaller() && size <= 70 && txt.length < 20) {
 		size += 0.1;
 		equation.style.fontSize = `${size}px`;
 		equation.style.wordWrap = "unset";
