@@ -40,6 +40,7 @@ function deletText() {
 }
 
 window.onclick = function (event) {
+	console.log(event.target);
 	console.log(event.target.textContent);
 	if (!event.target.matches(".settingIcon")) {
 		for (i = 0; i < dropdowns.length; i++) {
@@ -80,6 +81,15 @@ function calculator(event) {
 		pressdKey == "."
 	) {
 		inputText(pressdKey);
+		for (let i = 0; i < calculatorBtn.length; i++) {
+			if (calculatorBtn[i].innerText == pressdKey) {
+				let col = calculatorBtn[i].style.backgroundColor;
+				calculatorBtn[i].style.backgroundColor = "#c44b4b89";
+				setTimeout(() => {
+					calculatorBtn[i].style.backgroundColor = col;
+				}, 200);
+			}
+		}
 	}
 
 	if (pressdKey == "c" || pressdKey == "Escape") {

@@ -115,6 +115,9 @@ body {
 .calculator_button:hover {
 	opacity: 1;
 }
+.calculator_button:active {
+	background-color: #c44b4b89;
+}
 .function {
 	background-color: var(--functionsBackgroundColor);
 }
