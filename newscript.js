@@ -8,74 +8,51 @@ const dropdowns = document.getElementsByClassName("settingContent");
 const calculatorBtn = document.getElementsByClassName("calculator_button");
 const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
-function inputText(x) {
-	let text = equation.value;
-	console.log(Number(x));
-	if (Number(x)) {
-		if (text == "0") {
-			text = "";
-		}
-		text += x;
-	} else {
-		text += x;
-		if (isNaN(equation.value)) {
-			text = sieveX(x);
-		}
-	}
-	console.log(text);
-	displayEquation(text);
-}
-function displayEquation(text) {
-	equation.value = text;
-	output(text);
-	resizeText();
-}
-// console.log(equation.value);
-function sieveX(x) {
-	let text = equation.value;
-	// let endChar = text.slice(-1);
+let equationText = "";
 
-	switch (x) {
-		case ".":
-			text += "0.";
-			break;
-		case "+":
-		case "-":
-		case "/":
-		case "*":
-		case "^":
-			text = deletText(equation.value, 1) + x;
-			break;
-		case "()":
-			text += "(";
-			break;
+function output(text) {
+	outputNode.innerText = text;
+	if (isNaN(text)) {
+		deletText();
+		outputNode.classList.add("show");
+	} else {
+		outputNode.classList.remove("show");
 	}
-	console.log(text);
-	return text;
 }
+
+function displayUpdate(equationText) {
+	showEquation(equationText);
+	matchContendSize(equationText, display);
+	output(equationText);
+}
+function inputText(char) {
+	equationText += char;
+	displayUpdate(equationText);
+}
+function showEquation(text) {
+	if (text == "") {
+		equation.textContent = "0";
+	}
+	equation.textContent = text;
+}
+
+// console.log(equation.value);
 
 function all_clear() {
-	let text = "0";
+	equationText = "0";
 	equation.style.fontSize = "inherit";
 	equation.style.wordWrap = "unset";
-	return text;
+	displayUpdate(equationText);
 }
 
-//function deletText, deletes "n" charectors from the end of the
-// "text" and returns the remaning string...
+function deletText() {
+	let d = equation.textContent;
+	let text = "";
 
-function deletText(text, n) {
-	text += "";
-	let reminedText = "";
-	for (let i = 0; i < text.length - n; i++) {
-		reminedText += text[i];
+	if (text == "") {
+		text = "0";
 	}
-	resizeText();
-	if (reminedText == "") {
-		reminedText = all_clear();
-	}
-	console.log(reminedText);
-	return reminedText;
+	displayUpdate(text);
 }
 
 window.onclick = function (event) {
@@ -94,14 +71,6 @@ window.onclick = function (event) {
 	}
 	if (event.target.matches(".operator") || event.target.matches(".number")) {
 		inputText(event.target.innerText);
-	}
-	if (event.target.matches(".delete")) {
-		text = deletText(equation.value, 1);
-		displayEquation(text);
-	}
-	if (event.target.matches(".clear")) {
-		text = all_clear();
-		displayEquation(text);
 	}
 };
 function calculator(event) {
@@ -147,43 +116,51 @@ function calculator(event) {
 		inputText("×");
 	}
 	if (pressdKey == "Backspace") {
-		deletText(equation.value, 2);
+		deletText();
 	}
 
-	resizeText();
+	shrinkText();
 }
-
-function resizeText() {
-	let size = parseInt(window.getComputedStyle(equation).fontSize);
-	let txt = equation.value;
-	if (isOverflown) {
-		while (isOverflown()) {
-			if (size > 30) {
-				size -= 0.1;
-				equation.style.fontSize = `${size}px`;
-			} else {
-				equation.style.wordWrap = "break-word";
-				equation.style.overflow = "hidden";
-			}
-		}
+function matchContendSize(nodeContent, contentPlace) {
+	if (isOverflown(nodeContent, contentPlace)) {
+		shrinkText(nodeContent);
 	}
-	if (isSmaller) {
-		while (isSmaller() && size <= 70 && txt.length < 20) {
-			size += 0.1;
-			equation.style.fontSize = `${size}px`;
-			equation.style.wordWrap = "unset";
-			equation.style.overflow = "unset";
-		}
+	if (isSmaller(nodeContent, contentPlace)) {
+		ExpandText(nodeContent);
 	}
-	equation.scrollTop = equation.scrollHeight;
+	nodeContent.scrollTop = nodeContent.scrollHeight;
 }
 
-function isOverflown() {
-	return equation.scrollWidth * 1.05 > display.clientWidth;
+function shrinkText(nodeContent) {
+	let size = parseInt(window.getComputedStyle(nodeContent).fontSize);
+	if (size > 30) {
+		size -= 0.1;
+		nodeContent.style.fontSize = `${size}px`;
+	} else {
+		nodeContent.style.wordWrap = "break-word";
+		nodeContent.style.overflow = "hidden";
+		return;
+	}
 }
 
-function isSmaller() {
-	return equation.scrollWidth * 1.05 < display.clientWidth;
+function ExpandText(nodeContent) {
+	let size = parseInt(window.getComputedStyle(nodeContent).fontSize);
+	let txt = nodeContent.textContent;
+
+	while (size <= 70 && txt.length < 20) {
+		size += 0.1;
+		nodeContent.style.fontSize = `${size}px`;
+		nodeContent.style.wordWrap = "unset";
+		nodeContent.style.overflow = "unset";
+	}
+}
+
+function isOverflown(nodeContent, contentPlace) {
+	return nodeContent.scrollWidth * 1.05 > contentPlace.clientWidth;
+}
+
+function isSmaller(nodeContent, contentPlace) {
+	return nodeContent.scrollWidth * 1.05 < contentPlace.clientWidth;
 }
 function darkMode() {
 	r.style.setProperty("--back", "#ffffff");
@@ -224,13 +201,5 @@ function defaultMode() {
 		darkMode();
 	} else {
 		lightMode();
-	}
-}
-function output(text) {
-	outputNode.innerText = eval(text);
-	if (isNaN(text)) {
-		outputNode.classList.add("show");
-	} else {
-		outputNode.classList.remove("show");
 	}
 }
