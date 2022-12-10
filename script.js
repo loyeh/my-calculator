@@ -18,7 +18,7 @@ function inputText(x) {
 		text += x;
 	} else {
 		text += x;
-		if (isNaN(equation.value)) {
+		if (isNaN(text.slice(-2, -1))) {
 			text = sieveX(x);
 		}
 	}
@@ -27,6 +27,9 @@ function inputText(x) {
 }
 function displayEquation(text) {
 	equation.value = text;
+	// if (isNaN(text.slice(-1))) {
+	// 	deletText(text, 1);
+	// }
 	output(text);
 	resizeText();
 }
