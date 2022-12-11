@@ -10,7 +10,7 @@ const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
 function inputText(x) {
 	let text = equation.value;
-	console.log(Number(x));
+	// console.log(Number(x));
 	if (Number(x)) {
 		if (text == "0") {
 			text = "";
@@ -22,7 +22,7 @@ function inputText(x) {
 			text = sieveX(x);
 		}
 	}
-	console.log(text);
+	// console.log(text);
 	displayEquation(text);
 }
 function displayEquation(text) {
@@ -36,8 +36,8 @@ function displayEquation(text) {
 // console.log(equation.value);
 function sieveX(x) {
 	let text = equation.value;
-	// let endChar = text.slice(-1);
-
+	let endChar = text.slice(-1);
+	// console.log(endChar);
 	switch (x) {
 		case ".":
 			text += "0.";
@@ -49,11 +49,11 @@ function sieveX(x) {
 		case "^":
 			text = deletText(equation.value, 1) + x;
 			break;
-		case "()":
+		case `(...)`:
 			text += "(";
 			break;
 	}
-	console.log(text);
+	// console.log(text);
 	return text;
 }
 
@@ -83,7 +83,7 @@ function deletText(text, n) {
 
 window.onclick = function (event) {
 	console.log(event.target);
-	console.log(event.target.textContent);
+	// console.log(event.target.textContent);
 	if (!event.target.matches(".settingIcon")) {
 		for (i = 0; i < dropdowns.length; i++) {
 			let openDropdown = dropdowns[i];
@@ -110,7 +110,7 @@ window.onclick = function (event) {
 function calculator(event) {
 	let pressdKey = event.key;
 
-	console.log(pressdKey);
+	// console.log(pressdKey);
 
 	if (
 		pressdKey == 1 ||
