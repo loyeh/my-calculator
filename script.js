@@ -24,13 +24,13 @@ function inputText(x) {
 	}
 	// console.log(text);
 	displayEquation(text);
+	output(text);
 }
 function displayEquation(text) {
 	equation.value = text;
 	// if (isNaN(text.slice(-1))) {
 	// 	deletText(text, 1);
 	// }
-	output(text);
 	resizeText();
 }
 // console.log(equation.value);
@@ -102,6 +102,7 @@ function deletText(text, n) {
 		reminedText = all_clear();
 	}
 	console.log(reminedText);
+	output(reminedText);
 	return reminedText;
 }
 
@@ -152,7 +153,8 @@ function calculator(event) {
 		pressdKey == "/" ||
 		pressdKey == "(" ||
 		pressdKey == ")" ||
-		pressdKey == "."
+		pressdKey == "." ||
+		pressdKey == "*"
 	) {
 		inputText(pressdKey);
 		for (let i = 0; i < calculatorBtn.length; i++) {
@@ -170,9 +172,6 @@ function calculator(event) {
 		all_clear();
 	}
 
-	if (pressdKey == "*") {
-		inputText("×");
-	}
 	if (pressdKey == "Backspace") {
 		deletText(equation.value, 2);
 	}
@@ -254,6 +253,27 @@ function defaultMode() {
 	}
 }
 function output(text) {
+	let endChar = text.slice(-1);
+	if (isNaN(endChar) && endChar != ")") {
+		text = deletText(text, 1);
+	}
+	if (text.includes("(")) {
+		if (text.includes(")")) {
+			let open = text.match(/\(/g);
+			let close = text.match(/\)/g);
+			let n = open.length - close.length;
+			for (let i = 0; i < n; i++) {
+				text += ")";
+			}
+		} else {
+			for (let i = 0; i < open.length; i++) {
+				text += ")";
+			}
+		}
+	}
+
+	console.log(text);
+
 	outputNode.innerText = eval(text);
 	if (isNaN(text)) {
 		outputNode.classList.add("show");
