@@ -10,8 +10,8 @@ const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
 function inputText(x) {
 	let text = equation.value;
-	// console.log(Number(x));
-	if (Number(x)) {
+	let endChar = text.slice(-1);
+	if (Number(x) && endChar != ")") {
 		if (text == "0") {
 			text = "";
 		}
@@ -41,19 +41,43 @@ function sieveX(x) {
 	switch (x) {
 		case ".":
 			text += "0.";
+			displayEquation(text);
 			break;
 		case "+":
 		case "-":
 		case "/":
 		case "*":
 		case "^":
-			text = deletText(equation.value, 1) + x;
+			if (endChar != ")") {
+				text = deletText(equation.value, 1) + x;
+			} else {
+				text += x;
+			}
+			displayEquation(text);
 			break;
 		case `(...)`:
-			text += "(";
+			if (endChar != ")") {
+				if (!text.includes("(")) {
+					if (isNaN(endChar)) {
+						text += "(";
+					} else {
+						text += "";
+					}
+				} else {
+					if (!isNaN(endChar)) {
+						text += ")";
+					} else {
+						text += "(";
+					}
+				}
+			} else {
+				text += "";
+			}
+			displayEquation(text);
 			break;
 	}
 	// console.log(text);
+	displayEquation(text);
 	return text;
 }
 
