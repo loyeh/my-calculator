@@ -70,10 +70,20 @@ function sieveX(x) {
 					}
 				}
 			} else {
-				text += "";
+				if (text.includes("(")) {
+					if (text.includes(")")) {
+						let open = text.match(/\(/g);
+						let close = text.match(/\)/g);
+						if (open.length > close.length) {
+							text += ")";
+						} else {
+							text += "";
+						}
+					}
+					displayEquation(text);
+					break;
+				}
 			}
-			displayEquation(text);
-			break;
 	}
 	// console.log(text);
 	displayEquation(text);
