@@ -23,8 +23,7 @@ function inputText(x) {
 		}
 	}
 	// console.log(text);
-	displayEquation(text);
-	output(text);
+	return text;
 }
 function displayEquation(text) {
 	equation.value = text;
@@ -85,6 +84,7 @@ function all_clear() {
 	let text = "0";
 	equation.style.fontSize = "inherit";
 	equation.style.wordWrap = "unset";
+
 	return text;
 }
 
@@ -97,12 +97,11 @@ function deletText(text, n) {
 	for (let i = 0; i < text.length - n; i++) {
 		reminedText += text[i];
 	}
-	resizeText();
 	if (reminedText == "") {
 		reminedText = all_clear();
 	}
+	resizeText();
 	console.log(reminedText);
-	output(reminedText);
 	return reminedText;
 }
 
@@ -121,16 +120,16 @@ window.onclick = function (event) {
 		settingContent.classList.toggle("show");
 	}
 	if (event.target.matches(".operator") || event.target.matches(".number")) {
-		inputText(event.target.innerText);
+		text = inputText(event.target.innerText);
 	}
 	if (event.target.matches(".delete")) {
 		text = deletText(equation.value, 1);
-		displayEquation(text);
 	}
 	if (event.target.matches(".clear")) {
 		text = all_clear();
-		displayEquation(text);
 	}
+	displayEquation(text);
+	output(text);
 };
 function calculator(event) {
 	let pressdKey = event.key;
@@ -253,9 +252,10 @@ function defaultMode() {
 	}
 }
 function output(text) {
+	let finaltext = text;
 	let endChar = text.slice(-1);
 	if (isNaN(endChar) && endChar != ")") {
-		text = deletText(text, 1);
+		finaltext = deletText(text, 1);
 	}
 	if (text.includes("(")) {
 		if (text.includes(")")) {
@@ -263,18 +263,18 @@ function output(text) {
 			let close = text.match(/\)/g);
 			let n = open.length - close.length;
 			for (let i = 0; i < n; i++) {
-				text += ")";
+				finaltext += ")";
 			}
 		} else {
 			for (let i = 0; i < open.length; i++) {
-				text += ")";
+				finaltext += ")";
 			}
 		}
 	}
 
-	console.log(text);
+	console.log(finaltext);
 
-	outputNode.innerText = eval(text);
+	outputNode.innerText = eval(finaltext);
 	if (isNaN(text)) {
 		outputNode.classList.add("show");
 	} else {
