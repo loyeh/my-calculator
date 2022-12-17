@@ -92,6 +92,7 @@ body {
 	background-color: transparent;
 	text-align: end;
 	word-wrap: unset;
+	white-space: nowrap;
 	scrollbar-width: none;
 	/* border: 2px yellow solid !important; */
 	/* overflow: hidden; */

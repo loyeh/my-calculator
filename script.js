@@ -44,19 +44,27 @@ function sieveX(x) {
 			break;
 		case "+":
 		case "-":
-		case "/":
-		case "*":
+		case "\xF7":
+		case "\xD7":
 		case "^":
-			if (endChar == /\(/ || endChar == /\)/) {
-				text = deletText(equation.value, 1);
+			if (endChar != "(" && endChar != ")") {
+				text = deletText(equation.value, 1) + x;
+				break;
 			}
-			if (endChar != /\(/ || endChar != /\)/) {
+			if (endChar == "(" || endChar == ".") {
 				x = "";
+				text += x;
+				break;
 			}
-			text += x;
-			displayEquation(text);
-			break;
+			if (endChar == ")") {
+				text += x;
+				break;
+			}
 		case `(...)`:
+			if (text == "0" || text == "") {
+				text = "(";
+				break;
+			}
 			if (endChar != ")") {
 				if (!text.includes("(")) {
 					if (isNaN(endChar)) {
@@ -141,7 +149,11 @@ window.onclick = function (event) {
 		text = all_clear();
 	}
 	if (event.target.matches(".equals")) {
-		text = eval(text);
+		if (outputNode.innerText == "") {
+			text = "Syntax Error";
+		} else {
+			text = outputNode.innerText;
+		}
 	}
 	displayEquation(text);
 	output(text);
@@ -164,11 +176,11 @@ function calculator(event) {
 		pressdKey == 0 ||
 		pressdKey == "+" ||
 		pressdKey == "-" ||
-		pressdKey == "/" ||
+		pressdKey == "\xF7" ||
 		pressdKey == "(" ||
 		pressdKey == ")" ||
 		pressdKey == "." ||
-		pressdKey == "*"
+		pressdKey == "\xD7"
 	) {
 		inputText(pressdKey);
 		for (let i = 0; i < calculatorBtn.length; i++) {
@@ -196,21 +208,23 @@ function calculator(event) {
 function resizeText() {
 	let size = parseInt(window.getComputedStyle(equation).fontSize);
 	let txt = equation.value;
-	if (isOverflown) {
+	if (isOverflown()) {
 		while (isOverflown()) {
 			if (size > 30) {
 				size -= 0.1;
 				equation.style.fontSize = `${size}px`;
 			} else {
+				equation.style.whiteSpace = "normal";
 				equation.style.wordWrap = "break-word";
 				equation.style.overflow = "hidden";
 			}
 		}
 	}
-	if (isSmaller) {
+	if (isSmaller()) {
 		while (isSmaller() && size <= 70 && txt.length < 20) {
 			size += 0.1;
 			equation.style.fontSize = `${size}px`;
+			equation.style.whiteSpace = "nowrap";
 			equation.style.wordWrap = "unset";
 			equation.style.overflow = "unset";
 		}
@@ -285,15 +299,22 @@ function output(text) {
 			final += ")";
 		}
 	}
-	let finalText = final.replace("^", "**");
 
-	console.log(finalText);
+	final = final
+		.replace(/\^/g, "**")
+		.replace(/\xD7/g, "*")
+		.replace(/\xF7/g, "/");
 
-	outputNode.innerText = eval(finalText);
+	console.log(final);
+	try {
+		const result = eval(final);
+		outputNode.innerText = result;
+	} catch (error) {
+		outputNode.innerText = "";
+	}
 	if (isNaN(text)) {
 		outputNode.classList.add("show");
 	} else {
 		outputNode.classList.remove("show");
 	}
-	return text;
 }
