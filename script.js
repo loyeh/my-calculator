@@ -47,11 +47,13 @@ function sieveX(x) {
 		case "/":
 		case "*":
 		case "^":
-			if (endChar != ")") {
-				text = deletText(equation.value, 1) + x;
-			} else {
-				text += x;
+			if (endChar == /\(/ || endChar == /\)/) {
+				text = deletText(equation.value, 1);
 			}
+			if (endChar != /\(/ || endChar != /\)/) {
+				x = "";
+			}
+			text += x;
 			displayEquation(text);
 			break;
 		case `(...)`:
@@ -137,6 +139,9 @@ window.onclick = function (event) {
 	}
 	if (event.target.matches(".clear")) {
 		text = all_clear();
+	}
+	if (event.target.matches(".equals")) {
+		text = eval(text);
 	}
 	displayEquation(text);
 	output(text);
@@ -262,32 +267,33 @@ function defaultMode() {
 	}
 }
 function output(text) {
-	let finaltext = text;
+	let final = text;
 	let endChar = text.slice(-1);
 	if (isNaN(endChar) && endChar != ")") {
-		finaltext = deletText(text, 1);
+		final = deletText(text, 1);
 	}
+	let open = [0];
+	let close = [0];
 	if (text.includes("(")) {
+		open = text.match(/\(/g);
+		let n = open.length - close.length;
 		if (text.includes(")")) {
-			let open = text.match(/\(/g);
-			let close = text.match(/\)/g);
-			let n = open.length - close.length;
-			for (let i = 0; i < n; i++) {
-				finaltext += ")";
-			}
-		} else {
-			for (let i = 0; i < open.length; i++) {
-				finaltext += ")";
-			}
+			close = text.match(/\)/g);
+			n = open.length - close.length - 1;
+		}
+		for (let i = 0; i <= n; i++) {
+			final += ")";
 		}
 	}
+	let finalText = final.replace("^", "**");
 
-	console.log(finaltext);
+	console.log(finalText);
 
-	outputNode.innerText = eval(finaltext);
+	outputNode.innerText = eval(finalText);
 	if (isNaN(text)) {
 		outputNode.classList.add("show");
 	} else {
 		outputNode.classList.remove("show");
 	}
+	return text;
 }
