@@ -69,8 +69,9 @@ body {
 	display: none;
 	position: absolute;
 	/* opacity: 0.6; */
-	/* background-color: #3b3b3b83; */
-	width: 90%;
+	background-color: transparent;
+	resize: none;
+	max-width: 95%;
 	font-size: 50px;
 	bottom: -3px;
 	left: 7px;
@@ -81,9 +82,9 @@ body {
 #equation {
 	position: absolute;
 	right: 2.5%;
-	width: 95%;
+	max-width: 95%;
 	resize: none;
-	height: 80%;
+	height: 65%;
 	font-family: "Courier New", Courier, monospace;
 	font-size: 70px;
 	/* font-weight: 600; */
@@ -97,6 +98,7 @@ body {
 	/* border: 2px yellow solid !important; */
 	/* overflow: hidden; */
 }
+
 #equation:focus {
 	outline: none;
 }

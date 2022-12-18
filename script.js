@@ -90,7 +90,6 @@ function sieveX(x) {
 							text += "";
 						}
 					}
-					displayEquation(text);
 					break;
 				}
 			}
@@ -149,10 +148,10 @@ window.onclick = function (event) {
 		text = all_clear();
 	}
 	if (event.target.matches(".equals")) {
-		if (outputNode.innerText == "") {
+		if (outputNode.value == "") {
 			text = "Syntax Error";
 		} else {
-			text = outputNode.innerText;
+			text = outputNode.value;
 		}
 	}
 	displayEquation(text);
@@ -204,40 +203,41 @@ function calculator(event) {
 
 	resizeText();
 }
-
 function resizeText() {
-	let size = parseInt(window.getComputedStyle(equation).fontSize);
-	let txt = equation.value;
-	if (isOverflown()) {
-		while (isOverflown()) {
-			if (size > 30) {
-				size -= 0.1;
-				equation.style.fontSize = `${size}px`;
-			} else {
-				equation.style.whiteSpace = "normal";
-				equation.style.wordWrap = "break-word";
-				equation.style.overflow = "hidden";
-			}
-		}
-	}
-	if (isSmaller()) {
-		while (isSmaller() && size <= 70 && txt.length < 20) {
-			size += 0.1;
-			equation.style.fontSize = `${size}px`;
-			equation.style.whiteSpace = "nowrap";
-			equation.style.wordWrap = "unset";
-			equation.style.overflow = "unset";
-		}
-	}
-	equation.scrollTop = equation.scrollHeight;
+	resizeTextImpl(equation, display.clientWidth * 0.92, 30);
+	resizeTextImpl(outputNode, display.clientWidth * 0.88, 24);
 }
 
-function isOverflown() {
-	return equation.scrollWidth * 1.05 > display.clientWidth;
+function resizeTextImpl(elem, w, minSize) {
+	let size = parseInt(window.getComputedStyle(elem).fontSize);
+	elem.cols = elem.value.length;
+	console.log(elem.cols);
+	console.log(elem.scrollWidth);
+	elem.style.whiteSpace = "nowrap";
+	elem.style.wordWrap = "unset";
+	elem.style.overflow = "unset";
+
+	while (elem.scrollWidth < w && size < 70) {
+		size += 0.1;
+		elem.style.fontSize = `${size}px`;
+	}
+	while (elem.scrollWidth > w && size > minSize) {
+		size -= 0.1;
+		elem.style.fontSize = `${size}px`;
+	}
+	elem.style.whiteSpace = "normal";
+	elem.style.wordWrap = "break-word";
+	elem.style.overflow = "hidden";
+
+	elem.scrollTop = elem.scrollHeight;
 }
 
-function isSmaller() {
-	return equation.scrollWidth * 1.05 < display.clientWidth;
+function isOverflown(elem, p) {
+	return elem.scrollWidth * 1.05 > display.clientWidth * p;
+}
+
+function isSmaller(elem, p) {
+	return elem.scrollWidth * 1.05 < display.clientWidth * p;
 }
 function darkMode() {
 	r.style.setProperty("--back", "#ffffff");
@@ -308,13 +308,14 @@ function output(text) {
 	console.log(final);
 	try {
 		const result = eval(final);
-		outputNode.innerText = result;
+		outputNode.value = result;
 	} catch (error) {
-		outputNode.innerText = "";
+		outputNode.value = "";
 	}
 	if (isNaN(text)) {
 		outputNode.classList.add("show");
 	} else {
 		outputNode.classList.remove("show");
 	}
+	resizeText();
 }
