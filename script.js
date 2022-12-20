@@ -4,12 +4,11 @@ const equation = document.getElementById("equation");
 const display = document.getElementById("display");
 const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
-// const settingIcon = document.getElementsByClassName("settingContent");
 const calculatorBtn = document.getElementsByClassName("calculator_button");
 const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
-function inputText(x) {
-	let text = equation.value;
+let text = equation.value;
+function inputText(x, text = "") {
 	let endChar = text.slice(-1);
 	if (Number(x) && endChar != ")") {
 		if (text == "0") {
@@ -25,6 +24,7 @@ function inputText(x) {
 	// console.log(text);
 	return text;
 }
+
 function displayEquation(text) {
 	equation.value = text;
 	// if (isNaN(text.slice(-1))) {
@@ -32,6 +32,7 @@ function displayEquation(text) {
 	// }
 	resizeText();
 }
+
 // console.log(equation.value);
 function sieveX(x) {
 	let text = equation.value;
@@ -109,7 +110,6 @@ function all_clear() {
 
 //function deletText, deletes "n" charectors from the end of the
 // "text" and returns the remaning string...
-
 function deletText(text, n) {
 	text += "";
 	let reminedText = "";
@@ -124,6 +124,7 @@ function deletText(text, n) {
 	return reminedText;
 }
 
+//Mouse functionality
 window.onclick = function (event) {
 	console.log(event.target);
 	// console.log(event.target.textContent);
@@ -139,28 +140,30 @@ window.onclick = function (event) {
 		settingContent.classList.toggle("show");
 	}
 	if (event.target.matches(".operator") || event.target.matches(".number")) {
-		text = inputText(event.target.innerText);
+		text = inputText(event.target.innerText, text);
 	}
 	if (event.target.matches(".delete")) {
-		text = deletText(equation.value, 1);
+		text = deletText(text, 1);
 	}
 	if (event.target.matches(".clear")) {
 		text = all_clear();
 	}
+	displayEquation(text);
+	output(text);
 	if (event.target.matches(".equals")) {
 		if (outputNode.value == "") {
 			text = "Syntax Error";
 		} else {
-			text = outputNode.value;
+			text1 = outputNode.value;
+			displayEquation(text1);
 		}
 	}
-	displayEquation(text);
-	output(text);
+	return text;
 };
+
+//Keyboard functionality
 function calculator(event) {
 	let pressdKey = event.key;
-
-	// console.log(pressdKey);
 
 	if (
 		pressdKey == 1 ||
@@ -175,13 +178,13 @@ function calculator(event) {
 		pressdKey == 0 ||
 		pressdKey == "+" ||
 		pressdKey == "-" ||
-		pressdKey == "\xF7" ||
+		pressdKey == "*" ||
 		pressdKey == "(" ||
 		pressdKey == ")" ||
 		pressdKey == "." ||
-		pressdKey == "\xD7"
+		pressdKey == "^" ||
+		pressdKey == "/"
 	) {
-		inputText(pressdKey);
 		for (let i = 0; i < calculatorBtn.length; i++) {
 			if (calculatorBtn[i].innerText == pressdKey) {
 				let col = calculatorBtn[i].style.backgroundColor;
@@ -190,19 +193,60 @@ function calculator(event) {
 					calculatorBtn[i].style.backgroundColor = col;
 				}, 200);
 			}
+			if (calculatorBtn[i].innerText == "\xD7" && pressdKey == "*") {
+				let col = calculatorBtn[i].style.backgroundColor;
+				calculatorBtn[i].style.backgroundColor = "#c44b4b89";
+				setTimeout(() => {
+					calculatorBtn[i].style.backgroundColor = col;
+				}, 200);
+			}
+			if (calculatorBtn[i].innerText == "\xF7" && pressdKey == "/") {
+				let col = calculatorBtn[i].style.backgroundColor;
+				calculatorBtn[i].style.backgroundColor = "#c44b4b89";
+				setTimeout(() => {
+					calculatorBtn[i].style.backgroundColor = col;
+				}, 200);
+			}
 		}
+		text = inputText(pressdKey, text).replace("*", "\xD7").replace("/", "\xF7");
 	}
 
 	if (pressdKey == "c" || pressdKey == "Escape") {
-		all_clear();
+		text = all_clear();
+		let ac = document.querySelector(".clear");
+		console.log(ac);
+		let col = ac.style.backgroundColor;
+		ac.style.backgroundColor = "#c44b4b89";
+		setTimeout(() => {
+			ac.style.backgroundColor = col;
+		}, 200);
 	}
 
 	if (pressdKey == "Backspace") {
-		deletText(equation.value, 2);
+		text = deletText(text, 1);
+		let ac = document.querySelector(".delete");
+		console.log(ac);
+		let col = ac.style.backgroundColor;
+		ac.style.backgroundColor = "#c44b4b89";
+		setTimeout(() => {
+			ac.style.backgroundColor = col;
+		}, 200);
 	}
 
-	resizeText();
+	displayEquation(text);
+	output(text);
+
+	if (pressdKey == "=") {
+		if (outputNode.value == "") {
+			text = "Syntax Error";
+		} else {
+			text1 = outputNode.value;
+			displayEquation(text1);
+		}
+	}
+	return text;
 }
+
 function resizeText() {
 	resizeTextImpl(equation, display.clientWidth * 0.92, 30);
 	resizeTextImpl(outputNode, display.clientWidth * 0.88, 24);
@@ -239,6 +283,7 @@ function isOverflown(elem, p) {
 function isSmaller(elem, p) {
 	return elem.scrollWidth * 1.05 < display.clientWidth * p;
 }
+
 function darkMode() {
 	r.style.setProperty("--back", "#ffffff");
 	r.style.setProperty("--btnTextColor", "#ffffff");
@@ -256,6 +301,7 @@ function darkMode() {
 		"invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg) brightness(114%) contrast(105%)"
 	);
 }
+
 function lightMode() {
 	r.style.setProperty("--back", "#ededed");
 	r.style.setProperty("--btnTextColor", "#000000");
@@ -270,6 +316,7 @@ function lightMode() {
 	r.style.setProperty("--menueHoverBackgroundColor", "#fffffffc");
 	r.style.setProperty("--filter", "none");
 }
+
 function defaultMode() {
 	if (
 		window.matchMedia &&
@@ -280,6 +327,7 @@ function defaultMode() {
 		lightMode();
 	}
 }
+
 function output(text) {
 	let final = text;
 	let endChar = text.slice(-1);
