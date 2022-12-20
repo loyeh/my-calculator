@@ -156,6 +156,7 @@ window.onclick = function (event) {
 		} else {
 			text1 = outputNode.value;
 			displayEquation(text1);
+			output("");
 		}
 	}
 	return text;
@@ -242,6 +243,7 @@ function calculator(event) {
 		} else {
 			text1 = outputNode.value;
 			displayEquation(text1);
+			output("");
 		}
 	}
 	return text;
