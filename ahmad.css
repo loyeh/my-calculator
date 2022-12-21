@@ -194,7 +194,7 @@ body {
 @media only screen and (max-width: 480px) {
 	:root {
 		--w_size: 100vw;
-		--h_size: 100vh;
+		--h_size: 90vh;
 		--back: #eeeeee88;
 	}
 	.button_container {
