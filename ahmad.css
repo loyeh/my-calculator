@@ -192,9 +192,17 @@ body {
 	display: block;
 }
 @media only screen and (max-width: 480px) {
+	body {
+		/* min-height: 100vh; */
+		/* mobile viewport bug fix */
+		min-height: -webkit-fill-available;
+	}
+
+	html {
+		height: -webkit-fill-available;
+	}
 	:root {
 		--w_size: 100vw;
-		--h_size: 90vh;
 		--back: #eeeeee88;
 	}
 	.button_container {
