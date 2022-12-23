@@ -1,13 +1,24 @@
-// function for adding the innerText of pressed button to the display
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty("--h_size", `${vh}px`);
 
+// text of the equation that is inputed from the user
 const equation = document.getElementById("equation");
+
+// the text that has been shown in the main display of the calculator
 const display = document.getElementById("display");
+
+// the text that has been shown underneeth the display of the calculator
+const outputNode = document.getElementById("output");
+
 const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
 const calculatorBtn = document.getElementsByClassName("calculator_button");
-const outputNode = document.getElementById("output");
 const r = document.querySelector(":root");
-let text = equation.value;
+var text = equation.value;
+
+// function for adding the innerText of pressed button to the display
 function inputText(x, text = "") {
 	let endChar = text.slice(-1);
 	if (Number(x) && endChar != ")") {

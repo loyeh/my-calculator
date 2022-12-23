@@ -22,6 +22,9 @@
 textarea {
 	border: none;
 }
+/* button {
+	border-color: transparent;
+} */
 sub {
 	font-weight: 600;
 	font-size: calc(0.14 * var(--w_size));
@@ -39,7 +42,7 @@ body {
 	user-select: none;
 	padding: 10px;
 	width: var(--w_size);
-	height: var(--h_size);
+	height: 600px;
 	border: #000000 solid 2px;
 	background-color: var(--bodyBackgroundColor);
 	font-size: 70px;
@@ -193,13 +196,11 @@ body {
 }
 @media only screen and (max-width: 480px) {
 	body {
-		/* min-height: 100vh; */
-		/* mobile viewport bug fix */
-		min-height: -webkit-fill-available;
+		min-height: calc(var(--h_size));
 	}
 
 	html {
-		height: -webkit-fill-available;
+		height: calc(var(--h_size));
 	}
 	:root {
 		--w_size: 100vw;
