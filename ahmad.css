@@ -195,16 +195,12 @@ body {
 	display: block;
 }
 @media only screen and (max-width: 480px) {
-	body {
-		min-height: calc(var(--h_size));
-	}
-
-	html {
-		height: calc(var(--h_size));
-	}
 	:root {
 		--w_size: 100vw;
 		--back: #eeeeee88;
+	}
+	.calculator_body {
+		height: calc(var(--h_size));
 	}
 	.button_container {
 		gap: 1%;
