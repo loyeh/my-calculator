@@ -3,10 +3,10 @@ function mobileHeight() {
 	let vw = window.innerWidth;
 	let ovh = window.outerHeight;
 	let ovw = window.outerWidth;
-	console.log("vw: ", vw);
-	console.log("vh: ", vh);
-	console.log("ovw: ", ovw);
-	console.log("ovh: ", ovh);
+	// console.log("vw: ", vw);
+	// console.log("vh: ", vh);
+	// console.log("ovw: ", ovw);
+	// console.log("ovh: ", ovh);
 	document.documentElement.style.setProperty("--h_size", `${vh}px`);
 }
 window.addEventListener("resize", mobileHeight);
@@ -25,6 +25,7 @@ const settingContent = document.getElementById("settingContent");
 const dropdowns = document.getElementsByClassName("settingContent");
 const calculatorBtn = document.getElementsByClassName("calculator_button");
 const r = document.querySelector(":root");
+let ifUseLastText = true;
 var text = equation.value;
 
 // function for adding the innerText of pressed button to the display
@@ -32,6 +33,9 @@ function inputText(x, text = "") {
 	let endChar = text.slice(-1);
 	if (Number(x) && endChar != ")") {
 		if (text == "0") {
+			text = "";
+		}
+		if (ifUseLastText == false) {
 			text = "";
 		}
 		text += x;
@@ -140,13 +144,13 @@ function deletText(text, n) {
 		reminedText = all_clear();
 	}
 	resizeText();
-	console.log(reminedText);
+	// console.log(reminedText);
 	return reminedText;
 }
 
 //Mouse functionality
 window.onclick = function (event) {
-	console.log(event.target);
+	// console.log(event.target);
 	// console.log(event.target.textContent);
 	if (!event.target.matches(".settingIcon")) {
 		for (i = 0; i < dropdowns.length; i++) {
@@ -161,12 +165,15 @@ window.onclick = function (event) {
 	}
 	if (event.target.matches(".operator") || event.target.matches(".number")) {
 		text = inputText(event.target.innerText, text);
+		ifUseLastText = true;
 	}
 	if (event.target.matches(".delete")) {
 		text = deletText(text, 1);
+		ifUseLastText = true;
 	}
 	if (event.target.matches(".clear")) {
 		text = all_clear();
+		ifUseLastText = true;
 	}
 	displayEquation(text);
 	output(text);
@@ -174,12 +181,12 @@ window.onclick = function (event) {
 		if (outputNode.value == "") {
 			text = "Syntax Error";
 		} else {
-			text1 = outputNode.value;
-			displayEquation(text1);
+			text = outputNode.value;
+			displayEquation(text);
 			output("");
 		}
+		ifUseLastText = false;
 	}
-	return text;
 };
 
 //Keyboard functionality
@@ -206,6 +213,9 @@ function calculator(event) {
 		pressdKey == "^" ||
 		pressdKey == "/"
 	) {
+		if (ifUseLastText == false) {
+			text = "";
+		}
 		for (let i = 0; i < calculatorBtn.length; i++) {
 			if (calculatorBtn[i].innerText == pressdKey) {
 				let col = calculatorBtn[i].style.backgroundColor;
@@ -230,43 +240,45 @@ function calculator(event) {
 			}
 		}
 		text = inputText(pressdKey, text).replace("*", "\xD7").replace("/", "\xF7");
+		ifUseLastText = true;
 	}
 
 	if (pressdKey == "c" || pressdKey == "Escape") {
 		text = all_clear();
 		let ac = document.querySelector(".clear");
-		console.log(ac);
+		// console.log(ac);
 		let col = ac.style.backgroundColor;
 		ac.style.backgroundColor = "#c44b4b89";
 		setTimeout(() => {
 			ac.style.backgroundColor = col;
 		}, 200);
+		ifUseLastText = true;
 	}
 
 	if (pressdKey == "Backspace") {
 		text = deletText(text, 1);
 		let ac = document.querySelector(".delete");
-		console.log(ac);
+		// console.log(ac);
 		let col = ac.style.backgroundColor;
 		ac.style.backgroundColor = "#c44b4b89";
 		setTimeout(() => {
 			ac.style.backgroundColor = col;
 		}, 200);
+		ifUseLastText = true;
 	}
 
-	displayEquation(text);
-	output(text);
-
-	if (pressdKey == "=") {
+	if (pressdKey == "=" || pressdKey == "enter") {
 		if (outputNode.value == "") {
 			text = "Syntax Error";
 		} else {
-			text1 = outputNode.value;
-			displayEquation(text1);
+			text = outputNode.value;
+			displayEquation(text);
 			output("");
 		}
+		return (ifUseLastText = false);
 	}
-	return text;
+	displayEquation(text);
+	output(text);
 }
 
 function resizeText() {
@@ -277,8 +289,8 @@ function resizeText() {
 function resizeTextImpl(elem, w, minSize) {
 	let size = parseInt(window.getComputedStyle(elem).fontSize);
 	elem.cols = elem.value.length;
-	console.log(elem.cols);
-	console.log(elem.scrollWidth);
+	// console.log(elem.cols);
+	// console.log(elem.scrollWidth);
 	elem.style.whiteSpace = "nowrap";
 	elem.style.wordWrap = "unset";
 	elem.style.overflow = "unset";
@@ -375,7 +387,7 @@ function output(text) {
 		.replace(/\xD7/g, "*")
 		.replace(/\xF7/g, "/");
 
-	console.log(final);
+	// console.log(final);
 	try {
 		const result = eval(final);
 		outputNode.value = result;
