@@ -5,7 +5,7 @@
 }
 :root {
 	--w_size: 100vw;
-	--h_size: 600px;
+	--h_size: 100vh;
 	--back: #ededed;
 	--btnTextColor: #000000;
 	--menueTextColor: #000000;
@@ -31,8 +31,8 @@ sub {
 }
 
 body {
-	width: var(--w_size);
-	height: var(--h_size);
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -42,7 +42,7 @@ body {
 	user-select: none;
 	padding: 10px;
 	width: var(--w_size);
-	height: 600px;
+	height: var(--h_size);
 	border: #000000 solid 2px;
 	background-color: var(--bodyBackgroundColor);
 	font-size: 70px;
@@ -199,9 +199,10 @@ body {
 		--w_size: 100vw;
 		--back: #eeeeee88;
 	}
-	.calculator_body {
+	html {
 		height: calc(var(--h_size));
 	}
+
 	.button_container {
 		gap: 1%;
 		height: 69%;

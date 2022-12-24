@@ -1,7 +1,9 @@
-// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-let vh = window.innerHeight;
-// Then we set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty("--h_size", `${vh}px`);
+window.addEventListener("resize", () => {
+	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+	let vh = window.innerHeight;
+	// Then we set the value in the --vh custom property to the root of the document
+	document.documentElement.style.setProperty("--h_size", `${vh}px`);
+});
 
 // text of the equation that is inputed from the user
 const equation = document.getElementById("equation");
