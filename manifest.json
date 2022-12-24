@@ -1,0 +1,21 @@
+{
+	"nam": "CALCILOOYEH",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "img/icon1.png",
+			"sizes": "128*128",
+			"type": "image/png"
+		},
+		{
+			"src": "img/icon2.png",
+			"sizes": "919*929",
+			"type": "image/png"
+		},
+		{
+			"src": "img/icon3.ipeg",
+			"sizes": "128*128",
+			"type": "image/jpeg"
+		}
+	]
+}
