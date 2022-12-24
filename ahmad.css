@@ -42,7 +42,7 @@ body {
 	user-select: none;
 	padding: 10px;
 	width: var(--w_size);
-	height: var(--h_size);
+	height: 80%;
 	border: #000000 solid 2px;
 	background-color: var(--bodyBackgroundColor);
 	font-size: 70px;
@@ -198,6 +198,9 @@ body {
 	:root {
 		--w_size: 100vw;
 		--back: #eeeeee88;
+	}
+	.calculator_body {
+		height: 100%;
 	}
 	.button_container {
 		gap: 1%;
