@@ -1,9 +1,16 @@
-window.addEventListener("resize", () => {
-	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+function mobileHeight() {
 	let vh = window.innerHeight;
-	// Then we set the value in the --vh custom property to the root of the document
+	let vw = window.innerWidth;
+	let ovh = window.outerHeight;
+	let ovw = window.outerWidth;
+	console.log("vw: ", vw);
+	console.log("vh: ", vh);
+	console.log("ovw: ", ovw);
+	console.log("ovh: ", ovh);
 	document.documentElement.style.setProperty("--h_size", `${vh}px`);
-});
+}
+window.addEventListener("resize", mobileHeight);
+mobileHeight();
 
 // text of the equation that is inputed from the user
 const equation = document.getElementById("equation");

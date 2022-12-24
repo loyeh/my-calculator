@@ -32,7 +32,7 @@ sub {
 
 body {
 	width: 100vw;
-	height: 100vh;
+	height: var(--h_size);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -199,10 +199,6 @@ body {
 		--w_size: 100vw;
 		--back: #eeeeee88;
 	}
-	html {
-		height: calc(var(--h_size));
-	}
-
 	.button_container {
 		gap: 1%;
 		height: 69%;
