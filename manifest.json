@@ -3,19 +3,24 @@
 	"display": "standalone",
 	"icons": [
 		{
-			"src": "img/icon1.png",
-			"sizes": "212*212",
+			"src": "img/icons/icon 42.ipeg",
+			"sizes": "42*42",
 			"type": "image/png"
 		},
 		{
-			"src": "img/icon2.png",
-			"sizes": "512*512",
+			"src": "img/icons/icon 64.ipeg",
+			"sizes": "64*64",
 			"type": "image/png"
 		},
 		{
-			"src": "img/icon3.ipeg",
-			"sizes": "225*225",
-			"type": "image/jpeg"
+			"src": "img/icons/icon 96.ipeg",
+			"sizes": "96*96",
+			"type": "image/png"
+		},
+		{
+			"src": "img/icons/icon 128.ipeg",
+			"sizes": "128*128",
+			"type": "image/png"
 		}
 	]
 }
