@@ -1,250 +1,252 @@
 * {
-	box-sizing: border-box;
-	margin: 0%;
-	padding: 0%;
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
 }
 :root {
-	--w_size: 100vw;
-	--h_size: 100vh;
-	--back: #ededed;
-	--btnTextColor: #000000;
-	--menueTextColor: #000000;
-	--displayTextColor: #000000;
-	--numbersBackgroundColor: #d1d1d185;
-	--operatorsBackgroundColor: #2990fe85;
-	--functionsBackgroundColor: #7e7d7d53;
-	--bodyBackgroundColor: #fff;
-	--displayBackgroundColor: #e3f1ff;
-	--menueBackgroundColor: #85c4ffb8;
-	--menueHoverBackgroundColor: #fffffffc;
-	--filter: none;
+  --w_size: 100vw;
+  --h_size: 100vh;
+  --back: #ededed;
+  --btnTextColor: #000000;
+  --menueTextColor: #000000;
+  --displayTextColor: #000000;
+  --numbersBackgroundColor: #d1d1d185;
+  --operatorsBackgroundColor: #2990fe85;
+  --functionsBackgroundColor: #7e7d7d53;
+  --bodyBackgroundColor: #fff;
+  --displayBackgroundColor: #e3f1ff;
+  --menueBackgroundColor: #85c4ffb8;
+  --menueHoverBackgroundColor: #fffffffc;
+  --filter: none;
 }
 textarea {
-	border: none;
+  border: none;
 }
 /* button {
 	border-color: transparent;
 } */
 sub {
-	font-weight: 600;
-	font-size: calc(0.14 * var(--w_size));
+  font-weight: 600;
+  font-size: calc(0.14 * var(--w_size));
 }
 
 body {
-	width: 100vw;
-	height: var(--h_size);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--back);
+  width: 100vw;
+  height: var(--h_size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--back);
 }
 .calculator_body {
-	user-select: none;
-	padding: 10px;
-	width: var(--w_size);
-	height: 80%;
-	border: #000000 solid 2px;
-	background-color: var(--bodyBackgroundColor);
-	font-size: 70px;
-	border-radius: 5px;
+  user-select: none;
+  padding: 10px;
+  width: var(--w_size);
+  height: 80%;
+  border: #000000 solid 2px;
+  background-color: var(--bodyBackgroundColor);
+  font-size: 70px;
+  border-radius: 5px;
 }
 .button_container {
-	display: grid;
-	gap: 1%;
-	margin-top: 3.5%;
-	grid-template-columns: repeat(4, 1fr);
-	height: 67%;
+  display: grid;
+  gap: 1%;
+  margin-top: 3.5%;
+  grid-template-columns: repeat(4, 1fr);
+  height: 67%;
 }
 
 .calculator_display {
-	position: relative;
-	border-radius: 2px;
-	background-color: var(--displayBackgroundColor);
-	height: 30%;
-	color: var(--displayTextColor);
-	font-size: 70px;
-	align-items: center;
-	/* border: var(--bodyBackgroundColor) 2px solid; */
-	box-shadow: inset -3px -3px var(--back),
-		inset 3px 3px var(--functionsBackgroundColor);
+  position: relative;
+  border-radius: 2px;
+  background-color: var(--displayBackgroundColor);
+  height: 30%;
+  color: var(--displayTextColor);
+  font-size: 70px;
+  align-items: center;
+  /* border: var(--bodyBackgroundColor) 2px solid; */
+  box-shadow: inset -3px -3px var(--back),
+    inset 3px 3px var(--functionsBackgroundColor);
 }
 .output {
-	display: none;
-	position: absolute;
-	/* opacity: 0.6; */
-	background-color: transparent;
-	resize: none;
-	max-width: 95%;
-	font-size: 50px;
-	bottom: -3px;
-	left: 7px;
-	font-family: "Courier New", Courier, monospace;
-	/* border-top: var(--bodyBackgroundColor) 1px solid; */
-	overflow: hidden;
+  display: none;
+  position: absolute;
+  /* opacity: 0.6; */
+  background-color: transparent;
+  resize: none;
+  max-width: 95%;
+  font-size: 50px;
+  bottom: -3px;
+  left: 7px;
+  font-family: "Courier New", Courier, monospace;
+  /* border-top: var(--bodyBackgroundColor) 1px solid; */
+  white-space: nowrap !important;
+  overflow-wrap: unset !important;
+  overflow: hidden;
 }
 #equation {
-	position: absolute;
-	right: 2.5%;
-	max-width: 95%;
-	resize: none;
-	height: 65%;
-	font-family: "Courier New", Courier, monospace;
-	font-size: 70px;
-	/* font-weight: 600; */
-	user-select: none !important;
-	color: var(--displayTextColor);
-	background-color: transparent;
-	text-align: end;
-	word-wrap: unset;
-	white-space: nowrap;
-	scrollbar-width: none;
-	/* border: 2px yellow solid !important; */
-	/* overflow: hidden; */
+  position: absolute;
+  right: 2.5%;
+  max-width: 95%;
+  resize: none;
+  height: 65%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 70px;
+  /* font-weight: 600; */
+  user-select: none !important;
+  color: var(--displayTextColor);
+  background-color: transparent;
+  text-align: end;
+  word-wrap: unset;
+  white-space: nowrap;
+  scrollbar-width: none;
+  /* border: 2px yellow solid !important; */
+  /* overflow: hidden; */
 }
 
 #equation:focus {
-	outline: none;
+  outline: none;
 }
 .calculator_button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--numbersBackgroundColor);
-	color: var(--btnTextColor);
-	opacity: 0.8;
-	/* border: #666666 solid 1px; */
-	border-radius: 5px;
-	font-size: calc(0.1 * var(--w_size));
-	cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--numbersBackgroundColor);
+  color: var(--btnTextColor);
+  opacity: 0.8;
+  /* border: #666666 solid 1px; */
+  border-radius: 5px;
+  font-size: calc(0.1 * var(--w_size));
+  cursor: pointer;
 }
 .calculator_button:hover {
-	opacity: 1;
+  opacity: 1;
 }
 .calculator_button:active {
-	background-color: #c44b4b89;
+  background-color: #c44b4b89;
 }
 .function {
-	background-color: var(--functionsBackgroundColor);
+  background-color: var(--functionsBackgroundColor);
 }
 .operator {
-	background-color: var(--operatorsBackgroundColor);
-	font-size: calc(0.1 * var(--w_size));
+  background-color: var(--operatorsBackgroundColor);
+  font-size: calc(0.1 * var(--w_size));
 }
 .number {
-	background-color: var(--numbersBackgroundColor);
+  background-color: var(--numbersBackgroundColor);
 }
 
 #setting {
-	display: block;
-	position: absolute;
-	bottom: -11px;
-	right: 2px;
-	user-select: none;
-	cursor: pointer;
-	z-index: 10;
-	background-color: transparent;
+  display: block;
+  position: absolute;
+  bottom: -11px;
+  right: 2px;
+  user-select: none;
+  cursor: pointer;
+  z-index: 10;
+  background-color: transparent;
 }
 /* setting icon */
 .settingIcon {
-	transform: scalex(-1);
-	width: calc(0.07 * var(--w_size));
-	height: calc(0.07 * var(--w_size));
-	opacity: 0.3;
-	filter: var(--filter);
-	/* border: 2px red solid !important; */
-	transition: 0.3s ease-in;
+  transform: scalex(-1);
+  width: calc(0.07 * var(--w_size));
+  height: calc(0.07 * var(--w_size));
+  opacity: 0.3;
+  filter: var(--filter);
+  /* border: 2px red solid !important; */
+  transition: 0.3s ease-in;
 }
 .settingIcon:hover {
-	opacity: 1;
+  opacity: 1;
 }
 .settingIcon:focus-within {
-	opacity: 1;
+  opacity: 1;
 }
 /* setting menue */
 .settingContent {
-	display: none;
-	background-color: var(--menueBackgroundColor);
-	font-size: 0.3em;
-	white-space: nowrap;
-	color: var(--menueTextColor);
-	box-shadow: -3px -3px 16px 0px #ffffff74;
-	position: absolute;
-	right: 30px;
-	bottom: 20px;
-	text-align: center;
-	opacity: 1;
-	z-index: 11;
-	transition: 1s ease-in;
+  display: none;
+  background-color: var(--menueBackgroundColor);
+  font-size: 0.3em;
+  white-space: nowrap;
+  color: var(--menueTextColor);
+  box-shadow: -3px -3px 16px 0px #ffffff74;
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  text-align: center;
+  opacity: 1;
+  z-index: 11;
+  transition: 1s ease-in;
 }
 .settingContent div {
-	text-decoration: none;
-	display: block;
-	padding: 2px 20px;
-	z-index: 11;
-	transition: 0.35s ease-in;
+  text-decoration: none;
+  display: block;
+  padding: 2px 20px;
+  z-index: 11;
+  transition: 0.35s ease-in;
 }
 /* setting hover effects */
 .settingContent div:hover {
-	background-color: var(--menueHoverBackgroundColor);
+  background-color: var(--menueHoverBackgroundColor);
 }
 .darkMode {
-	background-color: black;
-	color: white;
+  background-color: black;
+  color: white;
 }
 .show {
-	display: block;
+  display: block;
 }
 @media only screen and (max-width: 480px) {
-	:root {
-		--w_size: 100vw;
-		--back: #eeeeee88;
-	}
-	.calculator_body {
-		height: 100%;
-	}
-	.button_container {
-		gap: 1%;
-		height: 69%;
-	}
-	.calculator_display {
-		height: 28%;
-		/* margin-bottom: 5%; */
-	}
-	#settingContent {
-		font-size: 0.3em;
-	}
+  :root {
+    --w_size: 100vw;
+    --back: #eeeeee88;
+  }
+  .calculator_body {
+    height: 100%;
+  }
+  .button_container {
+    gap: 1%;
+    height: 69%;
+  }
+  .calculator_display {
+    height: 28%;
+    /* margin-bottom: 5%; */
+  }
+  #settingContent {
+    font-size: 0.3em;
+  }
 }
 @media only screen and (max-height: 650px) {
-	#settingContent {
-		font-size: 0.25em;
-	}
+  #settingContent {
+    font-size: 0.25em;
+  }
 }
 @media only screen and (max-height: 350px) {
-	#settingContent {
-		font-size: 0.2em;
-	}
+  #settingContent {
+    font-size: 0.2em;
+  }
 }
 
 @media only screen and (min-width: 480px) {
-	:root {
-		--w_size: 400px;
-		--h_size: 600px;
-	}
+  :root {
+    --w_size: 400px;
+    --h_size: 600px;
+  }
 }
 @media (prefers-color-scheme: dark) {
-	:root {
-		--back: #ffffff;
-		--btnTextColor: #ffffff;
-		--menueTextColor: #ffffff;
-		--displayTextColor: #000000;
-		--numbersBackgroundColor: #636363;
-		--operatorsBackgroundColor: #214c7a;
-		--functionsBackgroundColor: #404040;
-		--bodyBackgroundColor: #000000;
-		--displayBackgroundColor: #717070;
-		--menueBackgroundColor: #626262;
-		--menueHoverBackgroundColor: #0f0f0f;
-		--filter: invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg)
-			brightness(114%) contrast(105%);
-	}
+  :root {
+    --back: #ffffff;
+    --btnTextColor: #ffffff;
+    --menueTextColor: #ffffff;
+    --displayTextColor: #000000;
+    --numbersBackgroundColor: #636363;
+    --operatorsBackgroundColor: #214c7a;
+    --functionsBackgroundColor: #404040;
+    --bodyBackgroundColor: #000000;
+    --displayBackgroundColor: #717070;
+    --menueBackgroundColor: #626262;
+    --menueHoverBackgroundColor: #0f0f0f;
+    --filter: invert(100%) sepia(0%) saturate(7467%) hue-rotate(133deg)
+      brightness(114%) contrast(105%);
+  }
 }
