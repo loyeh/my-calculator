@@ -304,7 +304,7 @@ function resizeTextImpl(elem, w, minSize) {
     elem.style.fontSize = `${size}px`;
   }
   elem.style.whiteSpace = "normal";
-  elem.style.wordWrap = "break-word";
+  elem.style.wordWrap = "anywhere";
   elem.style.overflow = "hidden";
 
   elem.scrollTop = elem.scrollHeight;
